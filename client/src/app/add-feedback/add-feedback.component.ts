@@ -11,6 +11,4 @@ import { HttpService } from '../../services/http.service';
   styleUrls: ['./add-feedback.component.scss'],
   providers: [DatePipe]
 })
-export class AddFeedbackComponent //doto: complete missing code..
-  {
-}
+export class AddFeedbackComponent{}

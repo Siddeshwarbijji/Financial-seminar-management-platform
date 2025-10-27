@@ -1,0 +1,73 @@
+# POST http://localhost:5000/api/user/register
+# Content-Type: application/json
+
+# {
+#     "username":"krishna",
+#     "password":"Krishna@123",
+#     "role":"participant",
+#     "email":"krishna@gmail.com"
+# }
+
+# POST http://localhost:5000/api/user/login
+# Content-Type: application/json
+
+# {
+#     "username":"krishna",
+#     "password":"Krishna@123"
+# }
+
+# GET http://localhost:5000/api/institution/event/professionals
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk0NzQxLCJleHAiOjE3NjE1ODExNDF9.hbJD68MbQl5XsT3b4wOfks2OXB2SsWOjW6_pqBQrWcuK02qwrNhwPtY3jJh1eagv-uuU4Hz_9SmTOgrB_GePhQ
+# Content-Type: application/json
+
+# GET http://localhost:5000/api/institution/event/1/enrollments
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk0NzQxLCJleHAiOjE3NjE1ODExNDF9.hbJD68MbQl5XsT3b4wOfks2OXB2SsWOjW6_pqBQrWcuK02qwrNhwPtY3jJh1eagv-uuU4Hz_9SmTOgrB_GePhQ
+# Content-Type: application/json
+
+# {
+#     "type": "Financia;",
+#     "description": "This resource demonstrates about how to manage financial expenses",
+#     "availabilityStatus": "available"
+# }
+
+# {
+#     "title":"Financial Management workshop",
+#     "description":"Come and sum with Bum",
+#     "location":"Ass",
+#     "schedule":"10-03-2025",
+#     "status":"PENDING"
+# }
+
+# GET http://localhost:5000/api/institution/event/1/enrollments
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk0NzQxLCJleHAiOjE3NjE1ODExNDF9.hbJD68MbQl5XsT3b4wOfks2OXB2SsWOjW6_pqBQrWcuK02qwrNhwPtY3jJh1eagv-uuU4Hz_9SmTOgrB_GePhQ
+# Content-Type: application/json
+
+# POST http://localhost:5000/api/user/register
+# Content-Type: application/json
+
+# {
+#     "username":"siddu",
+#     "password":"Siddu@123",
+#     "role":"Professional",
+#     "email":"siddu@gmail.com"
+# }
+
+# POST http://localhost:5000/api/user/login
+# Content-Type: application/json
+
+# {
+#     "username":"siddu",
+#     "password":"Siddu@123"
+# }
+
+# GET http://localhost:5000/api/professional/events?userId=4
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUFJPRkVTU0lPTkFMIiwidXNlcklkIjo0LCJlbWFpbCI6InNpZGR1QGdtYWlsLmNvbSIsInVzZXJuYW1lIjoic2lkZHUiLCJzdWIiOiJzaWRkdSIsImlhdCI6MTc2MTQ5Njg0MCwiZXhwIjoxNzYxNTgzMjQwfQ.7qY4PXFqaAq_yNsHEx2M0O-BJ5z9Jy71VB2vsn2qCxwUL7t8jFUohLtgl1O8a7davt51oYhYL5DugZ8Lfvzgxw
+# Content-Type: application/json
+
+# GET http://localhost:5000/api/institution/event/professionals
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk3MjMzLCJleHAiOjE3NjE1ODM2MzN9.RZnYho45C_jogA5z_vWu1kTX3PUgRm8U3bQ_Y78T1jjdEH15Y0LZvyVSQIMk88sLgfO51wO-lhnu-ycl0efLLA
+# Content-Type: application/json
+
+GET http://localhost:5000/api/participant?userId=5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUEFSVElDSVBBTlQiLCJ1c2VySWQiOjUsImVtYWlsIjoia3Jpc2huYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImtyaXNobmEiLCJzdWIiOiJrcmlzaG5hIiwiaWF0IjoxNzYxNTAwOTAxLCJleHAiOjE3NjE1ODczMDF9.d4pXlL6VCeaBXJJP-vVW5XiZ3RvnnP6GzahfOKVOE7NJmEm1uACTNAqUVGQDVMq6xjGpEcWWOd72MZcyiNE00w
