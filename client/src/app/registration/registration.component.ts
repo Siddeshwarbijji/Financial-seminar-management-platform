@@ -9,4 +9,4 @@ import { HttpService } from '../../services/http.service';
   templateUrl: './registration.component.html'
  
 })
-export class RegistrationComponent {//doto: complete missing code..
+export class RegistrationComponent{}

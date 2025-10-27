@@ -27,7 +27,7 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
       DashbaordComponent,    
       CreateEventComponent,
       AddResourceComponent,
-
+    
       ViewEventsComponent,
      
    

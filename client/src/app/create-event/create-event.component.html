@@ -1,1 +1,61 @@
-//doto: complete missing code..
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 left-panel">
+      <h3>Welcome to Event Manager</h3>
+      <p>Create and manage your institution's events with ease.</p>
+      <img src="assets/undraw_add-notes_9xls.png" alt="illustration" width="400px" class="img-fluid">
+
+      <div class="mt-4">
+        <i class="bi bi-facebook mx-2"></i>
+        <i class="bi bi-twitter mx-2"></i>
+        <i class="bi bi-instagram mx-2"></i>
+      </div>
+    </div>
+
+    <div class="col-md-6 m-y-10 form-section">
+      <h2>{{ updateId ? 'Edit Event' : 'Create Event' }}</h2>
+      <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-floating-label">
+          <input type="text" formControlName="title" placeholder=" " required
+            [class.is-invalid]="itemForm.get('title')?.touched && itemForm.get('title')?.invalid">
+          <label>Title</label>
+        </div>
+
+        <div class="form-floating-label">
+          <textarea formControlName="description" placeholder=" " rows="3" required
+            [class.is-invalid]="itemForm.get('description')?.touched && itemForm.get('description')?.invalid"></textarea>
+          <label>Description</label>
+        </div>
+
+        <div class="form-floating-label">
+          <input type="datetime-local" formControlName="schedule" placeholder=" " required
+            [class.is-invalid]="itemForm.get('schedule')?.touched && itemForm.get('schedule')?.invalid">
+          <label>Schedule</label>
+        </div>
+
+        <div class="form-floating-label">
+          <input type="text" formControlName="location" placeholder=" " required
+            [class.is-invalid]="itemForm.get('location')?.touched && itemForm.get('location')?.invalid">
+          <label>Location</label>
+        </div>
+
+        <div class="form-floating-label">
+          <select formControlName="status" placeholder=" " required
+            [class.is-invalid]="itemForm.get('status')?.touched && itemForm.get('status')?.invalid">
+            <option value="" disabled selected hidden></option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          <label>Status</label>
+        </div>
+
+        <button type="submit" class="btn btn-custom w-100 buttonstyle"
+          (click)="itemForm.invalid ? showInvalidPopup() : null">
+          {{ updateId ? 'Update Event' : 'Create Event' }}
+        </button>
+      </form>
+    </div>
+
+
+  </div>
+</div>
