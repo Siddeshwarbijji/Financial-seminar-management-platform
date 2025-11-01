@@ -1,1 +1,68 @@
-//doto: complete missing code..
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h3 class="mb-4">Add Resource to Event</h3>
+
+    <!-- Error Message -->
+    <div *ngIf="showError" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <!-- Success Message -->
+    <div *ngIf="showMessage" class="alert alert-success">{{ responseMessage }}</div>
+
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+      <!-- Event Dropdown -->
+      <!-- <div class="mb-3">
+        <label class="form-label">
+          Select Event <span class="text-danger">*</span>
+        </label>
+        <select class="form-select" formControlName="eventId">
+          <option value="">-- Select Event --</option>
+          <option *ngFor="let event of eventList" [value]="event.id">{{ event.name }}</option>
+        </select>
+        <div *ngIf="itemForm.get('eventId')?.invalid && itemForm.get('eventId')?.touched" class="text-danger">
+          Event selection is required.
+        </div>
+      </div> -->
+
+      <!-- Resource Name -->
+      <div class="mb-3">
+        <label class="form-label">
+          Resource Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" formControlName="description" placeholder="Enter resource name">
+        <div *ngIf="itemForm.get('description')?.invalid && itemForm.get('description')?.touched" class="text-danger">
+          Resource name is required (min 3 characters).
+        </div>
+      </div>
+
+      <!-- Resource Type -->
+      <div class="mb-3">
+        <label class="form-label">
+          Resource Type <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" formControlName="type" placeholder="Enter resource type">
+        <div *ngIf="itemForm.get('type')?.invalid && itemForm.get('type')?.touched" class="text-danger">
+          Resource type is required.
+        </div>
+      </div>
+
+      <!-- Availability Status -->
+      <div class="mb-3">
+        <label class="form-label">
+          Availability Status <span class="text-danger">*</span>
+        </label>
+        <select class="form-select" formControlName="availabilityStatus">
+          <option value="">Select status</option>
+          <option value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+        </select>
+        <div *ngIf="itemForm.get('availabilityStatus')?.invalid && itemForm.get('availabilityStatus')?.touched" class="text-danger">
+          Availability status is required.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100">Add Resource</button>
+    </form>
+  </div>
+</div>

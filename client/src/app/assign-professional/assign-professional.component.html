@@ -1,1 +1,46 @@
-//doto: complete missing code..
+<app-navbar></app-navbar>
+<div class="container mt-4">
+  <h4 class="mb-3">
+    Assign Professional for: {{ title }}
+  </h4>
+
+  <form (ngSubmit)="assignSelectedProfessionals()">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prof of professionals; let i = index">
+          <td>
+            <input type="radio" (change)="onCheckboxChange(prof, $event)" [checked]="isChecked(prof)" />
+            <!-- isChecked(prof) will check whether that prof is selected or not (present in selectedProfessionals list) and returns boolean -->
+          </td>
+          <td>{{ i + 1 }}</td>
+          <td>{{ prof?.username }}</td>
+          <td>{{ prof?.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="!selectedProfessional">
+      Add Selected Professionals
+    </button>
+  </form>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">{{successMessage}}</div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{errorMessage}}</div>
+
+  <!-- <div *ngIf="assignedProfessionals.length" class="alert alert-success mt-3">
+    Assigned Professionals to {{ selectedEvent?.name }}:
+    <ul>
+      <li *ngFor="let p of assignedProfessionals">
+        {{ p.username }} ({{ p.email }})
+      </li>
+    </ul>
+  </div> -->
+</div>

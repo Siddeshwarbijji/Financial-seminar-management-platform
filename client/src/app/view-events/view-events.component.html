@@ -1,1 +1,87 @@
-//doto: complete missing code..
+<app-navbar></app-navbar>
+<section class="container my-4">
+
+  <!-- Events Table -->
+  <div *ngIf="filteredEvents.length > 0; else noEventsBlock">
+    <div class="text-center mb-4">
+      <h3 *ngIf="role === 'INSTITUTION'">Organized Events</h3>
+      <h3 *ngIf="role === 'PROFESSIONAL'">Assigned Events</h3>
+      <h3 *ngIf="role === 'PARTICIPANT'">Enrolled Events</h3>
+    </div>
+    
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let events of paginatedEvents" [routerLink]="['/event-details']" [queryParams]="{eventId: events.id}"
+          class="scale-card">
+          <td>{{ events.title }}</td>
+          <td>{{ events.schedule | date:'medium' }}</td>
+          <td>{{ events.location }}</td>
+          <td>
+            <span class="badge" [ngClass]="{
+                'bg-primary': events.status.toLowerCase() === 'upcoming',
+                'bg-warning': events.status.toLowerCase() === 'ongoing',
+                'bg-success': events.status.toLowerCase() === 'completed',
+                'bg-secondary': !events.status
+              }">{{ events.status || 'N/A' }}</span>
+          </td>
+
+          <td class="icons">
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/add-resource')"
+              data-bs-toggle="tooltip" title="Add Resource">
+              <i class="bi bi-journal-richtext h4"></i>
+            </a>
+
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/create-event')"
+              data-bs-toggle="tooltip" title="Edit Event">
+              <i class="bi bi-pencil-square h4"></i>
+            </a>
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/assign-professional')"
+              data-bs-toggle="tooltip" title="Assign Professional">
+              <i class="bi bi-person-plus-fill h4"></i>
+            </a>
+
+            <a *ngIf="role === 'PROFESSIONAL'" (click)="navigateIfAllowed($event, events, '/update-event-status')"
+              data-bs-toggle="tooltip" title="Update Status">
+              <i class="bi bi-pencil-square h5"></i>
+            </a>
+            <a *ngIf="role !== 'INSTITUTION'" (click)="navigateParticipantIfAllowed($event, events, '/add-feedback')"
+               data-bs-toggle="tooltip"
+              title="Add Feedback">
+              <i class="bi bi-chat-right-dots-fill"></i>
+            </a>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center mt-3 pagination-arrows">
+      <button class="" (click)="previousPage()" [disabled]="currentPage === 1">
+        <i class="bi bi-arrow-left-circle-fill"></i></button>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <button class="" (click)="nextPage()" [disabled]="currentPage === totalPages"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    </div>
+  </div>
+
+  <!-- No Events Message -->
+  <ng-template #noEventsBlock>
+    <div class="text-center text-muted">
+      <!-- <i class="bi bi-calendar2-x" style="font-size: 2rem;"></i> -->
+      <!-- <h3>No events available.</h3> -->
+      <h3 *ngIf="role === 'INSTITUTION'">No organized events</h3>
+      <h3 *ngIf="role === 'PROFESSIONAL'">No assigned events</h3>
+      <h3 *ngIf="role === 'PARTICIPANT'">No enrolled events</h3>
+
+      <img src="assets/empty-dashboard.png" alt="no events" width="400px" height="380px">
+    </div>
+  </ng-template>
+</section>

@@ -10,8 +10,24 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
 
+@Service
 public class ResourceService {
+    @Autowired
+    private ResourceRepository resourceRepository;
+    @Autowired
+    private EventRepository eventRepository;
 
-    // implement service methods here
+    public Resource addResourceToEvent(Long eventId,Resource resource){
+        Optional<Event> event=eventRepository.findById(eventId);
+        if(event.isEmpty()){
+            throw new EntityNotFoundException("Event with Id"+eventId+" not found");
+        }
+        resource.setEvent(event.get());
+        Resource temp = resourceRepository.save(resource);
+        event.get().getResources().add(temp);
+        eventRepository.save(event.get());
+        return temp;
+    }
 }

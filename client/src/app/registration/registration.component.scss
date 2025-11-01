@@ -1,0 +1,150 @@
+/* Container and Row */
+.row.reg-wrapper {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  // margin: 0;
+  // padding: 0;
+}
+/* Left Panel - Form Section */
+.form-section {
+  flex: 1; /* Equal width */
+  height: 100vh; /* Equal height */
+  overflow-y: auto; /* Internal scroll if needed */
+  padding: 2%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* Right Panel - Image and Text */
+.right-panel {
+  flex: 1; /* Equal width */
+  height: 100vh; /* Equal height */
+  background-color: #6f42c1; /* Main accent color */
+  // background-color: grey;
+  color: white;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // padding: 40px;
+  box-sizing: border-box;
+}
+.right-panel img {
+  max-width: 80%;
+  margin: 20px 0;
+}
+
+/* Input field wrappers */
+.form-floating-label {
+  position: relative;
+  margin-bottom: 0.75rem; /* Reduced spacing between inputs */
+}
+
+/* Input fields */
+.form-floating-label input,
+.form-floating-label select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 14px;
+  color: black;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+/* Labels */
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Error messages */
+.text-danger {
+  min-height: 18px; /* Reserve space to prevent layout shift */
+  font-size: 13px;
+  color: #dc3545;
+  margin-top: 4px;
+}
+/* Custom button */
+.btn-custom {
+  // background-color: #6f42c1; /* Main accent */
+  // background-color: grey;
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  width: 100%;
+}
+.btn-custom:hover {
+  background-color: #8453de;
+}
+
+/* Links */
+.login-link {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-link:hover {
+  color: #0056b3;
+}
+
+/* Paragraph margin */
+.mt-3 {
+  margin-top: 1rem !important;
+}
+// .container{
+//   // margin:20px;
+//   box-shadow: 0 4px 15px rgba(0,86,179,0.5);
+//   border-radius: 10px;
+//   // padding-top: 10px;
+//   max-width: 900px; /* Adjust as needed */
+//   margin: 0 auto; /* Center the container */
+// }
+.container{
+  // height: auto;
+  // width: auto;
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left:0;
+  right: 0;
+  overflow: hidden;
+  // height: 500px;
+  width: 900px;
+    box-shadow: 0 4px 15px rgba(0,86,179,0.5);
+  border-radius: 10px;
+}
+
+
+// .container {
+//   max-width: 900px; /* Reduce width */
+//   margin: 40px auto; /* Space at top and bottom */
+//   // padding: 20px;
+//   box-shadow: 0 4px 15px rgba(0,86,179,0.5);
+//   border-radius: 10px;
+//   background-color: #fff;
+// }
+
+.right-panel{
+  box-shadow: 0 4px rgba(0, 86, 0.5, 0.5);
+  // border-radius: 0 10px 10px 0;
+}
+.right-panel h2{
+  // text-wrap-style: "Roboto";
+  // font-family: 'Roboto Slab';
+  font-family: 'Dancing Script';
+}
+

@@ -1,3 +1,78 @@
-a{
-    cursor: pointer;
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  margin-top: 20;
+  margin-bottom: 20;
+}
+.left-panel {
+  background-color: #6f42c1;
+  // background-color: grey;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.left-panel img {
+  max-width: 80%;
+  margin: 20px 0;
+}
+
+.form-section {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-floating-label {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-floating-label input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.form-floating-label label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #6c757d;
+  transition: all 0.2s ease;
+}
+.btn-custom {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn-custom:hover {
+  background-color: #8453de;
+}
+.container{
+  // height: auto;
+  // width: auto;
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left:0;
+  right: 0;
+  overflow: hidden;
+  // height: 500px;
+  width: 900px;
+}
+
+p a{
+  color: blue;
+  cursor: pointer;
 }

@@ -117,7 +117,7 @@
       "name": "Open mysql bash session",
       "type": "exec",
       "props": {
-        "command": "mysql -u root -p'hellowecp' -h localhost workshopManagementDb"
+        "command": "mysql -u root -p'hellowecp' -h localhost insuranceClaimProcessingSystemDb"
       }
     },
     {

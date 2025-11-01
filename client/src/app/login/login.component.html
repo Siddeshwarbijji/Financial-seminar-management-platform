@@ -1,1 +1,45 @@
-//doto: complete missing code..
+<div class="container">
+  <div class="row login-wrapper">
+
+    <!-- Left Panel: Image and Text -->
+    <div class="col-md-6 left-panel">
+      <h3>Welcome Back</h3>
+      <p>Login to manage your Account</p>
+      <!-- assets/undraw_add-notes_9xls.png -->
+      <img src="assets/login.svg" alt="illustration" width="400px" class="img-fluid">
+      <!-- <div class="mt-4">
+        <i class="bi bi-twitter mx-2"></i>
+        <i class="bi bi-instagram mx-2"></i>
+      </div> -->
+    </div>
+    <!-- Right Panel: Login Form -->
+    <div class="col-md-6 row md-6 form-section">
+      <h2>Login</h2>
+      <form [formGroup]="itemForm" (ngSubmit)="onLogin()">
+        <label>Username <span class="text-danger">*</span></label>
+        <div class="form-floating-label">
+          <input type="text" formControlName="username" placeholder="" required />
+          <div class="text-danger" *ngIf="itemForm.get('username')?.touched && itemForm.get('username')?.invalid">
+            Username is required and should be a minimum of 4 characters</div>
+        </div>
+        <label>Password <span class="text-danger">*</span></label>
+        <div class="form-floating-label password-group">
+          <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder=""
+            required />
+            <!-- <button type="button" class="eye-btn" (click)="togglePassword()">  -->
+              <!-- <i [class]="showPassword? 'fa fa-eye-slash':'fa fa-eye'">
+              </i> -->
+            <!-- </button>  -->
+          <div class="text-danger" *ngIf="itemForm.get('password')?.touched && itemForm.get('password')?.invalid">
+            Password is required</div>
+                   
+        </div>
+        <div *ngIf="showError" class="error-message text-danger">{{errorMessage}}</div>
+        <button type="submit" class="btn btn-custom w-100 buttonstyle" [disabled]="itemForm.invalid">
+          {{loading ? 'Loading...' : 'Login'}}
+        </button>
+      </form>
+      <p class="mt-3">Don't have an account? <a routerLink="/registration">Register</a></p>
+    </div>
+  </div>
+</div>
