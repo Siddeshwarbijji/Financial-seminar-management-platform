@@ -1,1 +1,54 @@
-//doto: complete missing code..
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm" style="max-width: 500px; width: 100%;">
+    <div class="card-header bg-primary text-white text-center py-3 fs-5 fw-bold">
+      <i class="bi bi-pencil-square me-2"></i> Update Event Status
+    </div>
+    <div class="card-body p-4">
+      <h4 class="text-center mb-4">Update Event Status</h4>
+      <form [formGroup]="itemForm" (ngSubmit)="updateStatus()">
+        <!-- Event Title -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"><i class="bi bi-tag"></i> Event Title</label>
+          <input type="text" class="form-control" formControlName="eventTitle" />
+        </div>
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"><i class="bi bi-text-left"></i> Description</label>
+          <textarea class="form-control" rows="2" formControlName="description"></textarea>
+        </div>
+        <!-- Schedule -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"><i class="bi bi-calendar"></i> Schedule</label>
+          <input type="text" class="form-control" formControlName="schedule" />
+        </div>
+        <!-- Location -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"><i class="bi bi-geo-alt"></i> Location</label>
+          <input type="text" class="form-control" formControlName="location" />
+        </div>
+        <!-- Status -->
+        <div class="mb-3">
+          <label class="form-label fw-bold"><i class="bi bi-check-circle"></i> Status <span
+              class="text-danger">*</span></label>
+          <select class="form-select" formControlName="status">
+            <option value="Pending">Pending</option>
+            <option value="In progress">In progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <!-- Submit Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="loading || itemForm.invalid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            Update Status
+          </button>
+        </div>
+      </form>
+      <!-- Success Message -->
+      <div *ngIf="successMessage" class="alert alert-success mt-3 fade show">
+        {{ successMessage }}
+      </div>
+    </div>
+    <div class="card-footer text-muted text-center">
+      Last updated: {{ lastUpdated | date }}
+    </div>

@@ -1,0 +1,91 @@
+# POST http://localhost:5000/api/user/register
+# Content-Type: application/json
+
+# {
+#     "username":"professional",
+#     "password":"professional@123",
+#     "role":"professional",
+#     "email":"professional@gmail.com"
+# }
+
+# POST http://localhost:5000/api/user/login
+# Content-Type: application/json
+
+# {
+#     "username":"institution",
+#     "password":"institution@123"
+# }
+
+# POST http://localhost:5000/api/participant/event/1/feedback?userId=2
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUEFSVElDSVBBTlQiLCJ1c2VySWQiOjIsImVtYWlsIjoicGFydGljaXBhbnRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJwYXJ0aWNpcGFudCIsInN1YiI6InBhcnRpY2lwYW50IiwiaWF0IjoxNzYxNTU0MTEzLCJleHAiOjE3NjE2NDA1MTN9.AqDK_n4Jaq5HTBqrw5klf-RPtTqpjJe2OMhJE2zi6ZfjbijjTf1DQczJiKb55kX1_mL-rLhowmGS7nfmWptuKA
+# Content-Type: application/json
+
+# {
+#     "content": "GGood"
+# }
+
+# POST http://localhost:5000/api/institution/event/2/professional?userId=4
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiaW5zdGl0dXRpb25AZ21haWwuY29tIiwidXNlcm5hbWUiOiJpbnN0aXR1dGlvbiIsInN1YiI6Imluc3RpdHV0aW9uIiwiaWF0IjoxNzYxNTcwODQ4LCJleHAiOjE3NjE2NTcyNDh9.8SjWFjKQnpAyphJXqmVQPJh_UNTg_DBPLydnm6AYgfVUtKqdO5d18EsBBm4iQ6WB3LCNcE-G2FUEdd3fmtgOqg
+# Content-Type: application/json
+
+# {
+#     "type": "Financial",
+#     "description": "This resource demonstrates about how to manage financial expenses",
+#     "availabilityStatus": "available"
+# }
+
+# GET http://localhost:5000/api/institution/event/2/feedback
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiaW5zdGl0dXRpb25AZ21haWwuY29tIiwidXNlcm5hbWUiOiJpbnN0aXR1dGlvbiIsInN1YiI6Imluc3RpdHV0aW9uIiwiaWF0IjoxNzYxNTcxMjY4LCJleHAiOjE3NjE2NTc2Njh9.RYyxHRYojrISx4yz6JoC6Z3Rb_2kJxiUDJyvQwHwYO73iNGO_hc-8IiCw-I9fA5ipkVDzlsdhkOh4_2_jYa-AQ
+# Content-Type: application/json
+
+
+# GET http://localhost:5000/api/institution/event/1/enrollments
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiaW5zdGl0dXRpb25AZ21haWwuY29tIiwidXNlcm5hbWUiOiJpbnN0aXR1dGlvbiIsInN1YiI6Imluc3RpdHV0aW9uIiwiaWF0IjoxNzYxNTU5MTEwLCJleHAiOjE3NjE2NDU1MTB9.Vaw3FD2x5sxZ4Uon05LH0y4pYIouMjb4W0HGsO8Z6OvzJbRBDoNOpZeZlMVbP5bRQcteCXqv3kEz6lLiMV_tbA
+
+# {
+#     "institutionId": 1,
+#     "title":"Financial Management workshop",
+#     "description":"Financial marketing",
+#     "location":"Mumbai",
+#     "schedule":"10-03-2025",
+#     "status":"PENDING"
+# }
+
+# GET http://localhost:5000/api/institution/event/1/enrollments
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk0NzQxLCJleHAiOjE3NjE1ODExNDF9.hbJD68MbQl5XsT3b4wOfks2OXB2SsWOjW6_pqBQrWcuK02qwrNhwPtY3jJh1eagv-uuU4Hz_9SmTOgrB_GePhQ
+# Content-Type: application/json
+
+# POST http://localhost:5000/api/user/register
+# Content-Type: application/json
+
+# {
+#     "username":"siddu",
+#     "password":"Siddu@123",
+#     "role":"Professional",
+#     "email":"siddu@gmail.com"
+# }
+
+# POST http://localhost:5000/api/user/login
+# Content-Type: application/json
+
+# {
+#     "username":"siddu",
+#     "password":"Siddu@123"
+# }
+
+PUT http://localhost:5000/api/professional/event/2/status?status=completed
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUFJPRkVTU0lPTkFMIiwidXNlcklkIjo0LCJlbWFpbCI6InByb2Zlc3Npb25hbEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InByb2Zlc3Npb25hbCIsInN1YiI6InByb2Zlc3Npb25hbCIsImlhdCI6MTc2MTU3MDY1MiwiZXhwIjoxNzYxNjU3MDUyfQ.Lc7t292Alunr7Ck6mz2ZUtnMWULcpHrjOZjYbz82uIXkSCs8VqEKC04cpjNcMxbgElVpR48p3NZ-S3x3RLrB0w
+Content-Type: application/json
+
+# {
+#     "status": "completed"
+# }
+
+# GET http://localhost:5000/api/institution/event/professionals
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiSU5TVElUVVRJT04iLCJ1c2VySWQiOjEsImVtYWlsIjoiYXZpbmFzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImF2aW5hc2giLCJzdWIiOiJhdmluYXNoIiwiaWF0IjoxNzYxNDk3MjMzLCJleHAiOjE3NjE1ODM2MzN9.RZnYho45C_jogA5z_vWu1kTX3PUgRm8U3bQ_Y78T1jjdEH15Y0LZvyVSQIMk88sLgfO51wO-lhnu-ycl0efLLA
+# Content-Type: application/json
+
+# POST http://localhost:5000/api/participant/event/1/enroll?userId=2
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUEFSVElDSVBBTlQiLCJ1c2VySWQiOjIsImVtYWlsIjoicGFydGljaXBhbnRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJwYXJ0aWNpcGFudCIsInN1YiI6InBhcnRpY2lwYW50IiwiaWF0IjoxNzYxNTU5Mjk4LCJleHAiOjE3NjE2NDU2OTh9.MNpwxGNMdFVzDaF8zPooeC9wWJPmZPzoBHSpZw3OCUyHeRkn9c5EB2JBhza8b12gZAxkJasNKaqhsJieqKw8cg

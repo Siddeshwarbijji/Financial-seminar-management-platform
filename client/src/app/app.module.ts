@@ -6,43 +6,47 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpService } from '../services/http.service';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
-
 import { ViewEventsComponent } from './view-events/view-events.component';
 
 
 import { AssignProfessionalComponent } from './assign-professional/assign-professional.component';
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
+import { AuthInterceptor } from './auth.interceptors';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-      RegistrationComponent,
-      DashbaordComponent,    
-      CreateEventComponent,
-      AddResourceComponent,
+    RegistrationComponent,
+    DashbaordComponent,
+    CreateEventComponent,
+    AddResourceComponent,
 
-      ViewEventsComponent,
-     
-   
-      AssignProfessionalComponent,
-           UpdateEventStatusComponent,
-           AddFeedbackComponent
+    ViewEventsComponent,
+
+
+    AssignProfessionalComponent,
+    UpdateEventStatusComponent,
+    AddFeedbackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
-  providers: [HttpService,HttpClientModule ],
+  providers: [HttpService, HttpClientModule, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

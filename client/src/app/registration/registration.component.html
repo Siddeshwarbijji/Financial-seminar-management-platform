@@ -1,1 +1,70 @@
-//doto: complete missing code..
+<div class="container mt-5 w-5">
+
+
+  <form [formGroup]="itemForm" (ngSubmit)="onRegister()" class="card p-4 shadow-sm">
+    <h1 class="text-center mb-3" class="form-label">Create your account</h1>
+    <p class="text-center text-muted mb-4" class="form-label">Please enter your details here!</p>
+    <!-- Username -->
+    <div class="mb-3">
+      <label class="form-label">Username<span class="required-asterisk">*</span></label>
+      <input type="text" class="form-control" formControlName="username" placeholder="Enter username" />
+      <div *ngIf="itemForm.get('username')?.invalid && itemForm.get('username')?.touched">
+        <div class="text-danger mt-1" *ngIf="itemForm.get('username')?.errors?.['required']">
+          Username is required.
+        </div>
+        <div class="text-danger mt-1" *ngIf="itemForm.get('username')?.errors?.['pattern']">
+          Only characters and spaces allowed.
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email<span class="required-asterisk">*</span></label>
+      <input type="email" class="form-control" formControlName="email" placeholder="Enter email" />
+      <div class="text-danger mt-1" *ngIf="itemForm.get('email')?.invalid && itemForm.get('email')?.touched">
+        Enter a valid email.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">Password<span class="required-asterisk">*</span></label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Enter password" />
+      <div *ngIf="itemForm.get('password')?.invalid && itemForm.get('password')?.touched">
+        <div class="text-danger mt-1" *ngIf="itemForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div class="text-danger mt-1" *ngIf="itemForm.get('password')?.errors?.['pattern']">
+          Atleast 8 characters, atleast one Upper, one lower, one special, one digit.
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Role Dropdown -->
+    <div class="mb-3">
+      <label class="form-label">Role<span class="required-asterisk">*</span></label>
+      <select class="form-select" formControlName="role">
+        <option value="">Select Role</option>
+        <option value="INSTITUTION">Institution</option>
+        <option value="PROFESSIONAL">Professional</option>
+        <option value="PARTICIPANT">Participant</option>
+      </select>
+      <div class="text-danger mt-1" *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched">
+        Role is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary w-100" [disabled]="itemForm.invalid">Register</button>
+  </form>
+
+  <!-- Success/Error Message -->
+  <div *ngIf="showMessage" class="alert alert-info mt-3 text-center">
+    {{ responseMessage }}
+  </div>
+</div>

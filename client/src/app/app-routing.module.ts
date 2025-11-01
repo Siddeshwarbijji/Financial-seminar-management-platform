@@ -17,6 +17,7 @@ import { UpdateEventStatusComponent } from './update-event-status/update-event-s
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
@@ -26,10 +27,6 @@ const routes: Routes = [
   { path: 'update-event-status', component: UpdateEventStatusComponent }, 
   { path: 'add-feedback', component: AddFeedbackComponent }, 
   { path: 'view-events', component: ViewEventsComponent },  
-  
-  
- 
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
   { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
