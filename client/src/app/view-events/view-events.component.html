@@ -1,1 +1,88 @@
-//doto: complete missing code..
+<section class="container my-4">
+
+  <!-- Events Table -->
+  <div *ngIf="eventList.length > 0; else noEventsBlock">
+    <div class="text-center mb-4">
+
+      <h3 *ngIf="role === 'INSTITUTION'">Organized Events</h3>
+      <h3 *ngIf="role === 'PROFESSIONAL'">Assigned Events</h3>
+      <h3 *ngIf="role === 'PARTICIPANT'">Enrolled Events</h3>
+      <!-- <p class="text-muted">Browse upcoming sessions and enroll.</p> -->
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let event of eventList" [routerLink]="['/event-details']" [queryParams]="{eventId: event.id}" class="scale-card">
+          <td>{{ event.title }}</td>
+          <td>{{ event.schedule | date:'mediumDate' }}</td>
+          <td>{{ event.location }}</td>
+          <td>
+            <span class="badge"
+              [ngClass]="{
+                'bg-primary': event.status.toLowerCase() === 'upcoming',
+                'bg-warning': event.status.toLowerCase() === 'ongoing',
+                'bg-success': event.status.toLowerCase() === 'completed',
+                'bg-secondary': !event.status
+              }"
+            >{{ event.status || 'N/A' }}</span>
+          </td>
+          <td class="icons">
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed(event, '/add-resource')">
+              <i class="bi bi-journal-richtext h4"></i>
+            </a>
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed(event, '/create-event')">
+              <i class="bi bi-pencil-square h4"></i>
+            </a>
+            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed(event, '/assign-professional')">
+              <i class="bi bi-person-plus-fill h4"></i>
+            </a>
+            <a *ngIf="role === 'PROFESSIONAL'" (click)="navigateIfAllowed(event, '/update-event-status')">
+              <i class="bi bi-pencil-square h5"></i>
+            </a>
+
+            <a *ngIf="role !== 'INSTITUTION'" (click)="navigateParticipantIfAllowed(event, '/add-feedback')" [class.disabled-link]="event.status?.toLowerCase() === 'upcoming'" >
+              <i class="bi bi-chat-right-dots-fill"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Events Message -->
+  <ng-template #noEventsBlock>
+    <div class="text-center text-muted">
+      <!-- <i class="bi bi-calendar2-x" style="font-size: 2rem;"></i> -->
+      <!-- <h3>No events available.</h3> -->
+      <h3 *ngIf="role === 'INSTITUTION'">No organized events</h3>
+      <h3 *ngIf="role === 'PROFESSIONAL'">No assigned events</h3>
+      <h3 *ngIf="role === 'PARTICIPANT'">No enrolled events</h3>
+
+      <img src="assets/empty-dashboard.png" alt="no events" width="400px" height="380px">
+    </div>
+  </ng-template>
+
+  <!-- Feedback Section -->
+  <!-- <div *ngIf="selectedEvent?.id" class="mt-4">
+    <h4>Submit Feedback for: {{ selectedEvent.title }}</h4>
+    <div class="mb-3">
+      <textarea class="form-control" [(ngModel)]="formModel.feedback" rows="3"
+        placeholder="Write your feedback here..."></textarea>
+    </div>
+    <button class="btn btn-success" (click)="saveFeedBack()">Submit Feedback</button>
+  </div> -->
+
+  <!-- Status Display -->
+  <!-- <div *ngIf="status" class="mt-3">
+    <p><strong>Event Status:</strong> {{ status }}</p>
+  </div> -->
+</section>

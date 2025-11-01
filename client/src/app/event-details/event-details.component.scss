@@ -1,0 +1,326 @@
+/* Parent Layout */
+.parent {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  // max-width: 1200px;
+  margin: 10px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 2;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Workshop Banner */
+.workshop-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.workshop-title h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e72b3;
+  margin-bottom: 10px;
+}
+
+.workshop-title div {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Workshop Cards */
+.workshop-card-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.workshop-card {
+  max-height: 200px;
+  /* Set desired height */
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  // scrollbar-color: #1e72b3 #f1f1f1;
+
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.workshop-card h6 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.workshop-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.details-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 13px;
+  color: #444;
+}
+
+.ongoing {
+  color: #28a745;
+  font-weight: 600;
+}
+
+
+
+.participants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.participant:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.participants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  /* Increased min width */
+  gap: 15px;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  min-height: 70px;
+  /* Prevent compression */
+  word-break: break-word;
+  /* Avoid text overflow */
+}
+
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.card-header {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-body {
+  max-height: 200px;
+  /* Set desired height */
+  scrollbar-width: none;
+  overflow-y: auto;
+  font-size: 14px;
+  color: black;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1e72b3;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #155a8a;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .parent {
+    flex-direction: column;
+  }
+}
+
+/* Parent Container */
+.enhanced-parent {
+  background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170') no-repeat center center / cover;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Left Panel */
+.enhanced-left-panel {
+  flex: 2;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.enhanced-left-panel:hover {
+  transform: translateY(-5px);
+}
+
+/* Banner */
+.banner-enhanced h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e72b3;
+  margin-bottom: 10px;
+}
+
+.banner-enhanced div {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Cards */
+.card-enhanced {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-enhanced:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Panel */
+.enhanced-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Info Cards */
+.info-card-enhanced {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.info-card-enhanced:hover {
+  transform: scale(1.02);
+}
+
+/* Animated Button */
+.btn-animated {
+  background: linear-gradient(90deg, #1e72b3, #4dabf7);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.btn-animated:hover {
+  background: linear-gradient(90deg, #4dabf7, #1e72b3);
+  transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .enhanced-parent {
+    flex-direction: column;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}

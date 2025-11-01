@@ -1,1 +1,78 @@
-//doto: complete missing code..
+<div class="container mt-5 w-5">
+  <form [formGroup]="itemForm" (ngSubmit)="onRegister()" class="card p-4 shadow-sm">
+
+    <!-- Username -->
+    <div class="mb-3">
+      <!-- <div class="lable-error"> -->
+        <label class="form-label">Username<span class="required-asterisk">*</span></label>
+      <!-- </div> -->
+      <br>
+      <input type="text" formControlName="username" style="width: 400px; height: 40px;" />
+      <div *ngIf="itemForm.get('username')?.invalid && itemForm.get('username')?.touched">
+        <div class="text-danger mt-1" *ngIf="itemForm.get('username')?.errors?.['required']">
+          Username is required.
+        </div>
+        <div class="text-danger mt-1" *ngIf="itemForm.get('username')?.errors?.['pattern']">
+          Only characters and spaces allowed.
+        </div>
+      </div>
+      <div *ngIf="responseUsernameMessage" class="text-danger mt-1">{{responseUsernameMessage}}</div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email<span class="required-asterisk">*</span></label>
+      <input type="email" formControlName="email" style="width: 400px; height: 40px;" />
+      <div class="text-danger mt-1" *ngIf="itemForm.get('email')?.invalid && itemForm.get('email')?.touched">
+        Enter a valid email.
+      </div>
+      <div *ngIf="responseEmailMessgae" class="text-danger mt-1">{{responseEmailMessgae}}</div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">Password<span class="required-asterisk">*</span></label>
+      <input type="password" formControlName="password" style="width: 400px; height: 40px;" />
+      <div *ngIf="itemForm.get('password')?.invalid && itemForm.get('password')?.touched">
+        <div class="text-danger mt-1" *ngIf="itemForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div class="text-danger mt-1" *ngIf="itemForm.get('password')?.errors?.['pattern']">
+          Atleast 8 characters, atleast one Upper, one lower, one special, one digit.
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Role Dropdown -->
+    <div class="mb-3">
+      <label class="form-label">Role<span class="required-asterisk">*</span></label>
+      <select class="form-select" formControlName="role">
+        <option value="">Select Role</option>
+        <option value="INSTITUTION">Institution</option>
+        <option value="PROFESSIONAL">Professional</option>
+        <option value="PARTICIPANT">Participant</option>
+      </select>
+      <div class="text-danger mt-1" *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched">
+        Role is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-secondary w-100" [disabled]="itemForm.invalid">{{loading ? "Loading" :
+      "Register"}}</button>
+    <p class="text-center">Already have an account? <a class="login-link" [routerLink]="['/login']">Login</a></p>
+  </form>
+
+  <div class="row">
+    <div class="col-md-13 left-panel">
+      <h3 class="center-heading">Create your account</h3>
+      <img src="assets/signup.png" alt="image" width="400px" class="img-fluid">
+    </div>
+  </div>
+
+
+</div>

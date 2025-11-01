@@ -1,0 +1,32 @@
+<div class="workshop-card-parent row">
+  <div class="col-md-6 mb-3">
+    <div class="workshop-card h-100">
+      <h6>Event Details</h6>
+      <p>{{ event?.description }}</p>
+      <div class="details-row">
+        <span><strong>Category:</strong> Education</span>
+        <span><strong>Created By:</strong> Admin</span>
+        <span><strong>Status:</strong> <span class="ongoing">{{ event?.status }}</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-3">
+    <div class="workshop-card h-100">
+      <h6>Professionals ({{ event?.professionals?.length }})</h6>
+      <div class="participants-list">
+        <div *ngFor="let person of event?.professionals" class="participant d-flex align-items-center mb-2">
+          <div class="avatar jd me-2">{{ person.username.slice(0, 1) }}</div>
+          <div>
+            <strong>{{ person.username }}</strong><br>
+            <p class="mb-0">{{ person.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 text-end mt-3" *ngIf="role === 'PARTICIPANT'">
+    <button class="btn btn-primary" (click)="enrollEvent()">Enroll</button>
+  </div>
+</div>

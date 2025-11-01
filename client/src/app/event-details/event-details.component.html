@@ -1,0 +1,92 @@
+<div class="parent enhanced-parent">
+  <div class="left-panel enhanced-left-panel glass-card">
+    <div class="workshop-banner banner-enhanced">
+      <!-- <div class="banner-image"></div> -->
+      <div class="workshop-title">
+        <h2>{{event?.title}}</h2>
+        <div>{{event?.schedule | date: 'MMMM dd, yyyy'}} &nbsp; • &nbsp; {{event?.location}}</div>
+      </div>
+      <div class="workshop-card-parent">
+        <div class="workshop-card card-enhanced glass-card">
+          <h6>Event Details</h6>
+          <p>{{event?.description}}</p>
+          <div class="details-row">
+            <span><strong>Category:</strong> Education</span>
+            <span><strong>Created By:</strong> Admin</span>
+            <span><strong>Status:</strong> <span class="ongoing">{{event?.status}}</span></span>
+          </div>
+        </div>
+        <div class="workshop-card card-enhanced glass-card">
+          <h6>Professionals ({{event?.professionals?.length}})</h6>
+          <div class="participants-grid">
+            <div *ngFor="let person of event?.professionals" class="participant">
+              <div class="avatar jd ">{{person.username.slice(0,1)}}</div>
+              <div>
+                <strong>{{person.username}}</strong><br>
+                <p>{{person.email}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div *ngIf="role === 'INSTITUTION'" class="workshop-card">
+          <h6>Enrolled Participants ({{event.enrollments.length}})</h6>
+          <div class="participants-list">
+            <div *ngFor="let person of event.enrollments" class="participant">
+              <div class="avatar jd">{{person.user.username.slice(0,1)}}</div>
+              <div>
+                <strong>{{person.user.username}}</strong><br>
+                <p>{{person.user.email}}</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <button class="btn btn-primary btn-animated" *ngIf="role === 'PARTICIPANT' && event.status !== 'Completed'" [disabled]="alreadyEnrolled" (click)="enrollEvent()">{{alreadyEnrolled ? 'Enrolled' : 'Enroll'}}</button>
+        <span *ngIf="alreadyEnrolled" class="text-success">You are already enrolled in this event</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel enhanced-right-panel glass-card">
+    <div class="row g-4 mt-4">
+      <!-- Enrollments Section -->
+      <div class="">
+        <div class="card shadow-sm info-card-enhanced glass-card">
+          <div class="card-header bg-primary text-white">
+            <h6 class="mb-0">Enrolled Participants ({{event?.enrollments?.length}})</h6>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let person of event.enrollments" class="d-flex align-items-center mb-3 participant">
+              <div
+                class="avatar bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-3"
+                >
+                {{person.participant.username.slice(0,1)}}
+              </div>
+              <div>
+                <strong>{{person.participant.username}}</strong><br>
+                <small class="text-muted">{{person.participant.email}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedbacks Section -->
+      <div class="">
+        <div class="card shadow-sm glass-card">
+          <div class="card-header bg-success text-white">
+            <h6 class="mb-0">Feedbacks ({{event?.feedbacks?.length}})</h6>
+          </div>
+          <div class="card-body">
+            <div *ngFor="let feedback of event?.feedbacks" class="mb-3 participant">
+              <strong>{{feedback.username}}</strong>
+              <p class="mb-1">{{feedback.content}}</p>
+              <!-- <small class="text-muted">Rating: {{feedback.rating}} / 5</small> -->
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

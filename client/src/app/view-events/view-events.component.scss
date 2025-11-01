@@ -1,0 +1,32 @@
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+th {
+    text-align: justify;
+}
+
+i {
+    color: black;
+}
+
+td,
+tr {
+    cursor: pointer;
+}
+
+.scale-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scale-card:hover {
+    transform: scale(1.001);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.disabled-link{
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
