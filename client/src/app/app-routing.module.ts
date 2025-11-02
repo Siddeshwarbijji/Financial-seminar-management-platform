@@ -17,6 +17,8 @@ import { UpdateEventStatusComponent } from './update-event-status/update-event-s
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AllEventsDetails } from './all-events/all-events.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { HomePageComponent } from './home/home-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path: 'view-events', component: ViewEventsComponent },  
   {path: 'event-details', component: EventDetailsComponent},
   {path: 'all-events', component: AllEventsDetails},
-
+  {path: 'about-us', component: AboutUsComponent},
+  {path: 'home', component: HomePageComponent},
+  
   { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

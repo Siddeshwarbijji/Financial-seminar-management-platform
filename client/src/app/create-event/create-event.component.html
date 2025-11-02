@@ -63,7 +63,13 @@
 
         <button type="submit" class="btn btn-custom w-100 buttonstyle"
           (click)="itemForm.invalid ? showInvalidPopup() : null">
-          {{ updateId ? 'Update Event' : 'Create Event' }}
+          <ng-container *ngIf="loading; else actionText">
+            <!-- <span class="spinner-border spinned-border-sm me-2" role="status" aria-hidden="true"></span> -->
+            Loading...
+          </ng-container>
+          <ng-template #actionText>
+            {{ updateId ? 'Update Event' : 'Create Event' }}
+          </ng-template>
         </button>
       </form>
     </div>

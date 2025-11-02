@@ -1,0 +1,35 @@
+.about-us {
+  background: #f8f9fa; /* Light background for contrast */
+  border-radius: 8px;
+}
+
+.about-us h2 {
+  color: #343a40;
+}
+
+.about-us img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.about-us p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-us img {
+  max-width: 90%;
+  height: auto;
+}
+
+.btn-warning {
+  font-weight: bold;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}

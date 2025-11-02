@@ -52,7 +52,7 @@ public class EnrollmentService {
         Enrollment enrollment = new Enrollment();
         enrollment.setUser(userObj.get());
         enrollment.setEvent(eventObj.get());
-        enrollment.setStatus(eventObj.get().getStatus());
+        enrollment.setStatus("PENDING");
         // return enrollmentRepository.save(enrollment);
         Enrollment temp = enrollmentRepository.save(enrollment);
         userObj.get().getEnrollments().add(temp);

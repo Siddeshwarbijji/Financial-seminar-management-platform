@@ -16,6 +16,9 @@
           <div class="text-danger" *ngIf="itemForm.get('username')?.errors?.['pattern']">
             only characters and spaces are allowed.
           </div>
+          <div class="text-danger" *ngIf="itemForm.get('username')?.errors?.['minlength']">
+            atleast 4 characters.
+          </div>
         </div>
         <div *ngIf="responseUsernameMessage" class="text-danger">{{responseUsernameMessage}}</div>
         </div>

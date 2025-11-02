@@ -22,6 +22,7 @@ export class CreateEventComponent implements OnInit {//they haven't implemented 
   responseMessage: string = "";
   updateId: number | null = null;
   minDateTime: string = '';
+  loading: boolean = false;
 
   institutionId: string | null = null;//Additionally added
   itemForm!: FormGroup;
@@ -66,15 +67,18 @@ export class CreateEventComponent implements OnInit {//they haven't implemented 
       this.errorMessage = 'Please fill all required fields.';
       return;
     }
+    this.loading = true;
     if (this.updateId) {
       this.httpService.updateEvent(this.updateId, this.itemForm.value).subscribe({
         next: () => {
           this.router.navigate(['/dashboard']);
+          this.loading = false;
           return;
         },
         error: (error: any) => {
           this.showError = true;
           this.errorMessage = error;
+          this.loading = false;
           return;
         }
       })
@@ -87,23 +91,16 @@ export class CreateEventComponent implements OnInit {//they haven't implemented 
     this.httpService.createEvent(event).subscribe({
       next: () => {
         this.router.navigate(['/dashboard']);
+        this.loading = false;
       },
       error: (error: any) => {
         this.showError = true;
         this.errorMessage = error;
+        this.loading = false;
       }
     })
     this.showError = false;
   }
-
-  // onEdit() {
-  //   if (!this.itemForm.valid) {
-  //     this.showError = true;
-  //     this.errorMessage = 'Please fill all required fields.';
-  //     return;
-  //   }
-  //   this.showError = false;
-  // }
 
   showInvalidPopup() {
     if (this.itemForm.invalid) {

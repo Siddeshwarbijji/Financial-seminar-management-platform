@@ -26,11 +26,6 @@
 //   transition: scale(1.05);
 // }
 
-// .card-body h5{
-//   font-weight: bold;
-//   color: #333;
-// }
-
 // .card-footer button{
 //   width: 100%;
 //   transition: background-color 0.3s ease;
@@ -53,7 +48,8 @@
 
 .event-card {
   height: 100px;
-  border-radius: 12px;
+  // border: ;
+  // border-radius: 12px;
   overflow: hidden;
   background: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

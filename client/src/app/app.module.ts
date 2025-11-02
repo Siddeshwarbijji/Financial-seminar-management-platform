@@ -21,6 +21,9 @@ import { AuthInterceptor } from './auth.interceptors';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AllEventsDetails } from './all-events/all-events.component';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../shared/footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { HomePageComponent } from './home/home-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { CommonModule } from '@angular/common';
     UpdateEventStatusComponent,
     AddFeedbackComponent,
     EventDetailsComponent,
-    AllEventsDetails
+    AllEventsDetails,
+    FooterComponent,
+    AboutUsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

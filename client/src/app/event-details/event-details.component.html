@@ -1,38 +1,5 @@
 <app-navbar></app-navbar><br>
 <div class="parent enhanced-parent">
-  <!-- <div class="left-panel enhanced-left-panel">
-    <div class="workshop-banner banner-enhanced">
-      <div class="workshop-title">
-        <h2>{{event?.title}}</h2>
-        <div>{{event?.schedule | date: 'MMMM dd, yyyy'}} &nbsp; • &nbsp; {{event?.location}}</div>
-      </div>
-      <div class="workshop-card-parent">
-        <div class="workshop-card card-enhanced event-details">
-          <h6>Event Details</h6>
-          <p>{{event?.description}}</p>
-          <div class="details-row">
-            <span><strong>Category:</strong> Education</span>
-            <span><strong>Created By:</strong> Admin</span>
-            <span><strong>Status:</strong> <span class="ongoing">{{event?.status}}</span></span>
-          </div>
-        </div>
-        <div class="workshop-card card-enhanced glass-card">
-          <h6>Professionals ({{event?.professionals?.length}})</h6>
-          <div class="participants-grid">
-            <div *ngFor="let person of event?.professionals" class="participant">
-              <div class="avatar jd ">{{person.username.slice(0,1)}}</div>
-              <div>
-                <strong>{{person.username}}</strong><br>
-                <p>{{person.email}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-primary btn-animated" *ngIf="role === 'PARTICIPANT'" (click)="enrollEvent()">Enroll</button>
-      </div>
-    </div>
-  </div> -->
-
   <div class="left-panel">
     <div class="workshop-banner">
       <!-- <div class="banner-image"></div> -->
@@ -46,9 +13,8 @@
             <h6>Event Details</h6>
             <p>{{event?.description}}</p>
             <div class="details-row">
-              <!-- <span><strong>Category:</strong> Education</span> -->
-              <span><strong>Created By:</strong> {{event.institutionName}}</span>
-              <span><strong>Status:</strong> <span class="ongoing">{{event?.status}}</span></span>
+              <span class="details"><strong>Organised By:</strong> {{event.institutionName}}</span>
+              <span class="details"><strong>Status:</strong> <span class="ongoing">{{event?.status}}</span></span>
             </div>
           </div>
         </div>
@@ -120,7 +86,6 @@
             <div *ngFor="let feedback of event?.feedbacks" class="mb-3 participant">
               <strong>{{feedback.username}}</strong>
               <p class="mb-1">{{feedback.content}}</p>
-              <!-- <small class="text-muted">Rating: {{feedback.rating}} / 5</small> -->
               <hr>
             </div>
           </div>

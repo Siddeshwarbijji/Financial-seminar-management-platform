@@ -3,7 +3,8 @@
   <h2 class="mb-4">All Events</h2>
 
   <div class="mb-3 w-25">
-    <input type="text" class="form-control" placeholder="Search events..." [(ngModel)]="searchTerm" (input)="filterEvents()">
+    <input type="text" class="form-control" placeholder="Search events..." [(ngModel)]="searchTerm"
+      (input)="filterEvents()">
   </div>
 
   <div>
@@ -13,9 +14,9 @@
     <div class="col-md-4 mb-4" *ngFor="let event of paginatedEvents; let i = index">
 
       <div class=" shadow-sm event-card">
-        <img [src]="images[(5-i)%10]" class="card-img-top event-image" alt="Event Image" />
+        <img [src]="images[(5-i)%10]" class="card-img-top event-image rounded" alt="Event Image" />
 
-        <div class="card-body">
+        <div class="card-body p-2">
           <h5 class="card-title event-title mb-2">{{ event.title }}</h5>
           <div class="event-meta mb-3">
             <p class="mb-1">
@@ -81,6 +82,7 @@
     <button class="" (click)="previousPage()" [disabled]="currentPage === 1">
       <i class="bi bi-arrow-left-circle-fill"></i></button>
     <span>Page {{currentPage}} of {{totalPages}}</span>
-    <button class="" (click)="nextPage()" [disabled]="currentPage === totalPages"><i class="bi bi-arrow-right-circle-fill"></i></button>
+    <button class="" (click)="nextPage()" [disabled]="currentPage === totalPages"><i
+        class="bi bi-arrow-right-circle-fill"></i></button>
   </div>
 </div>
