@@ -9,7 +9,7 @@
       <option value="">Sort By</option>
       <option value="location">Location</option>
       <option value="status">Status</option>
-      <option value="schedule">Date</option>
+      <option value="schedule">Scheduled Date</option>
     </select>
   </div>
 
@@ -28,7 +28,7 @@
       <thead class="table-dark">
         <tr>
           <th>Title</th>
-          <th>Date</th>
+          <th>Scheduled Date</th>
           <th>Location</th>
           <th>Status</th>
           <th>Actions</th>
@@ -51,25 +51,26 @@
           </td>
 
           <td class="icons">
-            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/add-resource')"
+            <a *ngIf="role === 'INSTITUTION'" [class.disabled]="events.status==='Completed'" (click)="navigateIfAllowed($event, events, '/add-resource')"
               data-bs-toggle="tooltip" title="Add Resource">
               <i class="bi bi-journal-richtext h4"></i>
             </a>
-
-            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/create-event')"
+            <!-- [class.disabled]="events.status==='Completed'"  -->
+            <a *ngIf="role === 'INSTITUTION'" [class.disabled]="events.status==='Completed'" (click)="navigateIfAllowed($event, events, '/create-event')"
               data-bs-toggle="tooltip" title="Edit Event">
               <i class="bi bi-pencil-square h4"></i>
             </a>
-            <a *ngIf="role === 'INSTITUTION'" (click)="navigateIfAllowed($event, events, '/assign-professional')"
+            <a *ngIf="role === 'INSTITUTION'" [class.disabled]="events.status==='Completed'" (click)="navigateIfAllowed($event, events, '/assign-professional')"
               data-bs-toggle="tooltip" title="Assign Professional">
               <i class="bi bi-person-plus-fill h4"></i>
             </a>
 
-            <a *ngIf="role === 'PROFESSIONAL'" (click)="navigateIfAllowed($event, events, '/update-event-status')"
+            <a *ngIf="role === 'PROFESSIONAL'" [class.disabled]="events.status==='Completed'" (click)="navigateIfAllowed($event, events, '/update-event-status')"
               data-bs-toggle="tooltip" title="Update Status">
               <i class="bi bi-pencil-square h5"></i>
             </a>
-            <a *ngIf="role !== 'INSTITUTION'" (click)="navigateParticipantIfAllowed($event, events, '/add-feedback')"
+            <!--  -->
+            <a *ngIf="role !== 'INSTITUTION'" [class.disabled]="events.status!=='Completed'" (click)="navigateParticipantIfAllowed($event, events, '/add-feedback')"
              data-bs-toggle="tooltip"
               title="Add Feedback">
               <i class="bi bi-chat-right-dots-fill"></i>

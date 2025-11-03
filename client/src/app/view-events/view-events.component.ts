@@ -52,12 +52,14 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
     this.role = localStorage.getItem('role');
+    this.sortBy='schedule';
     if (this.role === 'INSTITUTION') {
       this.httpService.getEventByInstitutionId(this.userId).subscribe({
         next: (data) => {
           this.eventList = data
           this.filteredEvents = data;
           this.filteredEvents = [...this.eventList];
+          this.applySort();
           console.log("insitution ", data);
         }
       })

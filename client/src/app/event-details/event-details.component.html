@@ -37,6 +37,7 @@
           <div *ngIf="message">Enrolled successfully!</div>
         </div>
         <div class="d-flex justify-content-center" *ngIf="role === 'PARTICIPANT' && alreadyEnrolled">
+          <p class="alert alert-warning py-1 px-2 mt-2 mb-0" *ngIf="participantStatus === 'pending'">Approval Pending</p>
           <p class="alert alert-success py-1 px-2 mt-2 mb-0" *ngIf="participantStatus === 'accepted'">Already Enrolled</p>
           <p class="alert alert-danger py-1 px-2 mt-2 mb-0" *ngIf="participantStatus === 'rejected'">Enrollment rejected</p>
         </div>

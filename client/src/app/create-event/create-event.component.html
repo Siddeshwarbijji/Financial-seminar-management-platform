@@ -53,7 +53,7 @@
           <select formControlName="status" placeholder=" "
             [class.is-invalid]="itemForm.get('status')?.touched && itemForm.get('status')?.invalid">
             <option value="" disabled selected hidden></option>
-            <option value="Upcoming">Upcoming</option>
+            <option value="Upcoming" [disabled]="itemForm.get('status')?.value==='Ongoing'">Upcoming</option>
             <option value="Ongoing">Ongoing</option>
             <option value="Completed" *ngIf="updateId">Completed</option>
           </select>

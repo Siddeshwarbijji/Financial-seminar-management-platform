@@ -39,7 +39,7 @@
           <label class="form-label fw-bold"><i class="bi bi-check-circle"></i> Status <span
               class="text-danger">*</span></label>
           <select class="form-select" formControlName="status">
-            <option value="Upcoming">Upcoming</option>
+            <option value="Upcoming" [disabled]="itemForm.get('status')?.value==='Ongoing'" >Upcoming</option>
             <option value="Ongoing">Ongoing</option>
             <option value="Completed">Completed</option>
           </select>

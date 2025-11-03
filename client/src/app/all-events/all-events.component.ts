@@ -26,7 +26,8 @@ export class AllEventsDetails implements OnInit {
         this.httpService.viewAllEvents().subscribe({
             next: (data) => {
                 this.events = data;
-                this.filteredEvents = data;
+                this.filteredEvents = data.filter((ev:any) =>ev.status!='Completed');
+                // this.filteredEvents = data;
             },
             error: (err) => {
                 console.error('Error fetching events:', err);
