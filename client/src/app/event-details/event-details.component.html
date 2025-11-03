@@ -1,11 +1,6 @@
 <home-navbar></home-navbar>
 <br>
 <div class="parent enhanced-parent">
-  <!-- <div class="">
-    <button class="btn" (click)="goBack()">
-      <i class="bi-arrow-left-circle-fill fs-2"></i>
-    </button>
-  </div> -->
   <div class="left-panel">
     <div class="workshop-banner">
       <div class="workshop-title">
@@ -35,24 +30,15 @@
             </div>
           </div>
         </div>
-        <!-- </div> -->
-        <!-- <div *ngIf="role === 'INSTITUTION'" class="workshop-card">
-          <h6>Enrolled Participants ({{event.enrollments.length}})</h6>
-          <div class="participants-list">
-            <div *ngFor="let person of event.enrollments" class="participant">
-              <div class="avatar jd">{{person.user.username.slice(0,1)}}</div>
-              <div>
-                <strong>{{person.user.username}}</strong><br>
-                <p>{{person.user.email}}</p>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <div class="d-flex justify-content-center">
           <button class="btn btn-primary w-25 text-center"
             *ngIf="role === 'PARTICIPANT' && !alreadyEnrolled && !eventCompleted" (click)="enrollEvent()">{{loading ?
             'Enrolling...' : 'Enroll'}}</button>
           <div *ngIf="message">Enrolled successfully!</div>
+        </div>
+        <div class="d-flex justify-content-center" *ngIf="role === 'PARTICIPANT' && alreadyEnrolled">
+          <p class="alert alert-success py-1 px-2 mt-2 mb-0" *ngIf="participantStatus === 'accepted'">Already Enrolled</p>
+          <p class="alert alert-danger py-1 px-2 mt-2 mb-0" *ngIf="participantStatus === 'rejected'">Enrollment rejected</p>
         </div>
       </div>
     </div>

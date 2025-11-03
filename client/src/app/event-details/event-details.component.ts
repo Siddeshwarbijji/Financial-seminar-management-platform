@@ -9,7 +9,7 @@ import { Location } from "@angular/common";
     styleUrls: ['./event-details.component.scss']
 })
 
-export class EventDetailsComponent implements OnInit{
+export class EventDetailsComponent implements OnInit {
     event: any;
     role: string = '';
     showFeedback: boolean = false;
@@ -20,21 +20,29 @@ export class EventDetailsComponent implements OnInit{
     message: boolean = false;
     loading: boolean = false;
     eventCompleted: boolean = false;
-    buttonClicked:boolean = false; 
+    buttonClicked: boolean = false;
+    participantStatus: string = '';
 
-    constructor(private route : ActivatedRoute, private router: Router, private httpService: HttpService, private location: Location){}
+    constructor(private route: ActivatedRoute, private router: Router, private httpService: HttpService, private location: Location) { }
     ngOnInit(): void {
         this.role = localStorage.getItem('role')!;
         const eventId = Number(this.route.snapshot.queryParamMap.get('eventId'));
         const userId = Number(localStorage.getItem('userId'));
-        if(eventId){
+        if (eventId) {
             this.httpService.getEventById(eventId).subscribe({
-                next: (data)=> {
+                next: (data) => {
                     this.event = data;
                     this.eventCompleted = data.status.toLowerCase() === 'completed'
                     this.httpService.isUserEnrolled(userId, eventId).subscribe({
-                        next: (status)=>{
+                        next: (status) => {
                             this.alreadyEnrolled = status;
+
+                            if (this.role === 'PARTICIPANT') {
+                                const enrollment = data.enrollments.find((e: any) => e.participant.id === userId);
+                                if (enrollment) {
+                                    this.participantStatus = enrollment.status.toLowerCase();
+                                }
+                            }
                         }
                     })
                 }
@@ -43,24 +51,25 @@ export class EventDetailsComponent implements OnInit{
     }
 
     updateEnrollmentStatus(enrollmentId: number, status: string) {
-                this.buttonClicked = true;
-            this.httpService.acceptRejectEnrollment(enrollmentId, status).subscribe({
-                next: (updatedEnrollment) => {
-                    const index = this.event.enrollments.findIndex((e: any) => e.id === enrollmentId);
-                    if (index > -1) {
-                        this.event.enrollments[index].status = status;  // update locally
-                    }
-                },
-                error: (err) => console.error(`Error updating status to ${status}`, err)
-            });
-        }
-    enrollEvent(){
-        if(this.alreadyEnrolled){
+        this.buttonClicked = true;
+        this.httpService.acceptRejectEnrollment(enrollmentId, status).subscribe({
+            next: (updatedEnrollment) => {
+                const index = this.event.enrollments.findIndex((e: any) => e.id === enrollmentId);
+                if (index > -1) {
+                    this.event.enrollments[index].status = status;  // update locally
+                }
+            },
+            error: (err) => console.error(`Error updating status to ${status}`, err)
+        });
+    }
+
+    enrollEvent() {
+        if (this.alreadyEnrolled) {
             return;
         }
         this.loading = true;
         this.httpService.EnrollParticipant(this.event.id, Number(localStorage.getItem('userId'))).subscribe({
-            next: ()=> {
+            next: () => {
                 this.alreadyEnrolled = true;
                 this.message = true;
                 this.router.navigate(['/dashboard']);
@@ -68,13 +77,14 @@ export class EventDetailsComponent implements OnInit{
             }
         })
     }
-    showFeedbacks(){
+    
+    showFeedbacks() {
         this.showFeedback = !this.showFeedback;
     }
-    handleFeedback(){
+    handleFeedback() {
         this.addFeedback = !this.addFeedback;
     }
-    handleUpdateEventStatus(){
+    handleUpdateEventStatus() {
         // this.showUpdateStatus = !this.showUpdateStatus;
         this.router.navigate(['/update-event-status', this.event.id]);
     }
