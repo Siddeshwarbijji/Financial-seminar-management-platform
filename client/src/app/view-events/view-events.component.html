@@ -1,14 +1,29 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
 <section class="container my-4">
+  <div class="d-flex filters mb-3">
+    <input type="text" class="form-control w-25" placeholder="Search by title" [(ngModel)]="searchTerm"
+      (input)="applyFilter()">
+
+    <select class="form-select w-25" [(ngModel)]="sortBy" (change)="applySort()">
+      <option value="">Sort By</option>
+      <option value="location">Location</option>
+      <option value="status">Status</option>
+      <option value="schedule">Date</option>
+    </select>
+  </div>
+
+
 
   <!-- Events Table -->
-  <div *ngIf="filteredEvents.length > 0; else noEventsBlock">
+  <div *ngIf="filteredEvents.length > 0; else noSearchResults">
     <div class="text-center mb-4">
+
       <h3 *ngIf="role === 'INSTITUTION'">Organized Events</h3>
       <h3 *ngIf="role === 'PROFESSIONAL'">Assigned Events</h3>
       <h3 *ngIf="role === 'PARTICIPANT'">Enrolled Events</h3>
+      <!-- <p class="text-muted">Browse upcoming sessions and enroll.</p> -->
     </div>
-    
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
@@ -21,8 +36,8 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let events of paginatedEvents" [routerLink]="['/event-details']" [queryParams]="{eventId: events.id}"
-          class="scale-card">
+        <tr *ngFor="let events of paginatedEvents" [routerLink]="['/event-details']"
+          [queryParams]="{eventId: events.id}" class="scale-card">
           <td>{{ events.title }}</td>
           <td>{{ events.schedule | date:'medium' }}</td>
           <td>{{ events.location }}</td>
@@ -55,7 +70,7 @@
               <i class="bi bi-pencil-square h5"></i>
             </a>
             <a *ngIf="role !== 'INSTITUTION'" (click)="navigateParticipantIfAllowed($event, events, '/add-feedback')"
-               data-bs-toggle="tooltip"
+             data-bs-toggle="tooltip"
               title="Add Feedback">
               <i class="bi bi-chat-right-dots-fill"></i>
             </a>
@@ -64,24 +79,28 @@
         </tr>
       </tbody>
     </table>
-    <div class="d-flex justify-content-center mt-3 pagination-arrows">
+    <div class="d-flex justify-content-center mt-3">
       <button class="" (click)="previousPage()" [disabled]="currentPage === 1">
         <i class="bi bi-arrow-left-circle-fill"></i></button>
       <span>Page {{currentPage}} of {{totalPages}}</span>
-      <button class="" (click)="nextPage()" [disabled]="currentPage === totalPages"><i class="bi bi-arrow-right-circle-fill"></i></button>
+      <button class="" (click)="nextPage()" [disabled]="currentPage === totalPages"><i
+          class="bi bi-arrow-right-circle-fill"></i></button>
     </div>
   </div>
 
-  <!-- No Events Message -->
-  <ng-template #noEventsBlock>
-    <div class="text-center text-muted">
-      <!-- <i class="bi bi-calendar2-x" style="font-size: 2rem;"></i> -->
-      <!-- <h3>No events available.</h3> -->
-      <h3 *ngIf="role === 'INSTITUTION'">No organized events</h3>
-      <h3 *ngIf="role === 'PROFESSIONAL'">No assigned events</h3>
-      <h3 *ngIf="role === 'PARTICIPANT'">No enrolled events</h3>
 
-      <img src="assets/empty-dashboard.png" alt="no events" width="400px" height="380px">
+  <ng-template #noSearchResults>
+    <div *ngIf="eventList.length>0;else noEventsBlock" class="text-center my-4">
+      <img src="assets/empty-dashboard.png" alt="No3" height="300px" width="300px">
+      <h3>No events found</h3>
+    </div>
+  </ng-template>
+
+
+  <ng-template #noEventsBlock>
+    <div class="text-center my-4">
+      <img src="assets/empty-dashboard.png" alt="No3" height="300px" width="300px">
+      <h4>No events available</h4>
     </div>
   </ng-template>
 </section>

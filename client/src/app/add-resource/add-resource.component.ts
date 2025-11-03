@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { HttpService } from '../services/http.service';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-resource',
@@ -17,7 +18,7 @@ export class AddResourceComponent implements OnInit {
   showMessage: boolean = false;
   responseMessage: string = '';
 
-  constructor(private fb: FormBuilder, private httpService: HttpService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private httpService: HttpService, private route: ActivatedRoute, private router: Router, private location: Location) {
     this.itemForm = this.fb.group({
       eventId: [null, [Validators.required]],
       description: [undefined, [Validators.required]],
@@ -28,7 +29,6 @@ export class AddResourceComponent implements OnInit {
 
   ngOnInit(): void {
     const eventId = this.route.snapshot.queryParamMap.get('eventId');
-    console.log("vnetID: ", eventId);
     this.itemForm.patchValue({ eventId: eventId });
     this.getEventsForInstitution();
   }
@@ -85,5 +85,9 @@ export class AddResourceComponent implements OnInit {
     //     this.errorMessage = 'Failed to add resource. Please try again.';
     //   }
     // });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -1,19 +1,14 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
 <div class="parent">
-  <!-- <span>
-    <button class="btn btn-outline-secondary d-flex align-items-center gap-2" (click)="goBack()">
-      <i class="bi bi-arrow-left"></i>
-    </button>
-  </span>
-  <span>
-    <h2 class="text-center text-primary mt-2">{{ event.title }}</h2>
-  </span> -->
+
   <div class="d-flex align-items-center gap-30 mb-3">
     <button class="btn d-flex align-items-center gap-2 ms-3" (click)="goBack()">
       <i class="bi-arrow-left-circle-fill fs-2"></i>
     </button>
-    <h2 class="text-primary mb-0">{{ event.title }}</h2>
+    <h2 class="text-primary">{{ event.title }}</h2>
   </div>
+
   <div class="container px-1 shadow rounded bg-white">
     <div class="row">
       <div class="col-md-5 d-flex align-items-center justify-content-center">

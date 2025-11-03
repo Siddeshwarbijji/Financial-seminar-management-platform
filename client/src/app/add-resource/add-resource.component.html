@@ -1,7 +1,14 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
 <div class="container mt-5">
+  <div class="d-flex align-items-center gap-30 mb-3">
+    <button class="btn d-flex align-items-center gap-2" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+    <h3 class="">Add Resource to Event</h3>
+  </div>
   <div class="card shadow-lg p-4">
-    <h3 class="mb-4">Add Resource to Event</h3>
+    <!-- <h3 class="mb-4">Add Resource to Event</h3> -->
 
     <!-- Error Message -->
     <div *ngIf="showError" class="alert alert-danger">{{ errorMessage }}</div>
@@ -56,7 +63,8 @@
           <option value="Available">Available</option>
           <option value="Unavailable">Unavailable</option>
         </select>
-        <div *ngIf="itemForm.get('availabilityStatus')?.invalid && itemForm.get('availabilityStatus')?.touched" class="text-danger">
+        <div *ngIf="itemForm.get('availabilityStatus')?.invalid && itemForm.get('availabilityStatus')?.touched"
+          class="text-danger">
           Availability status is required.
         </div>
       </div>

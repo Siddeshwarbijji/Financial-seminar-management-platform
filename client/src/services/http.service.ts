@@ -135,4 +135,8 @@ export class HttpService {
    isUserEnrolled(userId: number, eventId: number){
       return this.httpClient.get<boolean>(`${this.serverName}/api/participant/isenrolled/${userId}/${eventId}`);
    }
+
+   acceptRejectEnrollment(enrollmentId: number, status: string): Observable<any>{
+      return this.httpClient.put<any>(`${this.serverName}/api/institution/event/enrollments/${enrollmentId}`, {status: status});
+   }
 }

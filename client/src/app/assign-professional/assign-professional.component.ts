@@ -26,7 +26,7 @@ export class AssignProfessionalComponent implements OnInit {
   title: string = '';
 
   // successMessage:string = '';
-  errorMessage:string='';
+  errorMessage: string = '';
 
   constructor(private route: ActivatedRoute, private location: Location, private router: Router, private fb: FormBuilder, private httpService: HttpService) { }
 
@@ -39,20 +39,20 @@ export class AssignProfessionalComponent implements OnInit {
     }
 
     this.httpService.getEventById(this.eventId).subscribe({
-      next: (data)=> {
+      next: (data) => {
         this.eventProfessionals = data.professionals;
 
         // Now fetch all the professionals
         this.httpService.GetAllProfessionals().subscribe({
           next: (allProfessionals: any[]) => {
             // this.professionals = data;
-            const assignedIds = this.eventProfessionals.map((p: any)=> p.id);
-            this.professionals = allProfessionals.filter((prof: any)=> !assignedIds.includes(prof.id));
+            const assignedIds = this.eventProfessionals.map((p: any) => p.id);
+            this.professionals = allProfessionals.filter((prof: any) => !assignedIds.includes(prof.id));
           }
         })
       }
     })
-    
+
   }
 
   initializeForm() {
@@ -64,12 +64,9 @@ export class AssignProfessionalComponent implements OnInit {
 
   onCheckboxChange(prof: any, event: any): void {
     if (event.target.checked) {
-      console.log("selectng")
       this.selectedProfessional = prof;
       this.itemForm.patchValue({ userId: prof.id || prof.userId })
-      console.log(this.itemForm.value);
     } else {
-      console.log("fake")
       this.selectedProfessional = null;
       this.itemForm.patchValue({ userId: null })
     }
@@ -82,7 +79,6 @@ export class AssignProfessionalComponent implements OnInit {
 
   assignSelectedProfessionals() {
     if (this.itemForm.valid) {
-      console.log("here")
       this.httpService.assignProfessionals(this.itemForm.value.eventId, this.itemForm.value.userId).subscribe({
         next: () => {
           this.submitted = false;
@@ -91,12 +87,26 @@ export class AssignProfessionalComponent implements OnInit {
             this.router.navigate(['/dashboard']);
           }, 1500);
         },
-        error :(error) =>{
-          this.errorMessage = error.error.message || 'An unexpected error occured.'
+        error: (error) => {
+          this.errorMessage = error.error.message || 'An unexpected error occured.';
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1500);
         }
       })
     }
-    console.log("outside")
   }
 
+  goBack(): void { this.location.back(); }
+
 }
+
+//     <div class="d-flex align-items-center gap-30 mb-3">
+//   <button class="btn d-flex align-items-center gap-2" (click)="goBack()">
+//     <i class="bi-arrow-left-circle-fill fs-2"></i>
+//   </button>
+//   <h3 class="">Add Resource to Event</h3>
+// </div>
+// goBack(): void {this.location.back();}
+// import { Location } from '@angular/common';
+// private location: Location

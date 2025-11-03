@@ -36,7 +36,7 @@ export class AddFeedbackComponent implements OnInit {
     if (this.eventId) {
       this.httpService.getEventById(this.eventId).subscribe(data => {
         this.event = data;
-        console.log(this.event);
+        // console.log(this.event);
       })
     }
   }

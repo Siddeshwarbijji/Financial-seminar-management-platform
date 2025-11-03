@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit{
     message: boolean = false;
     loading: boolean = false;
     eventCompleted: boolean = false;
-    
+    buttonClicked:boolean = false; 
 
     constructor(private route : ActivatedRoute, private router: Router, private httpService: HttpService){}
     ngOnInit(): void {
@@ -31,7 +31,6 @@ export class EventDetailsComponent implements OnInit{
                 next: (data)=> {
                     this.event = data;
                     this.eventCompleted = data.status.toLowerCase() === 'completed'
-                    console.log("event status ",this.eventCompleted);
                     this.httpService.isUserEnrolled(userId, eventId).subscribe({
                         next: (status)=>{
                             this.alreadyEnrolled = status;
@@ -39,17 +38,23 @@ export class EventDetailsComponent implements OnInit{
                     })
                 }
             })
-            // this.event.professionals.events.enrollments
-            // console.log(this.event);
         }
-        // this.httpService.getEnrollments(id).subscribe({
-        //     next: (data)=> this.enrollments = data
-        // })
     }
 
+    updateEnrollmentStatus(enrollmentId: number, status: string) {
+                this.buttonClicked = true;
+            this.httpService.acceptRejectEnrollment(enrollmentId, status).subscribe({
+                next: (updatedEnrollment) => {
+                    const index = this.event.enrollments.findIndex((e: any) => e.id === enrollmentId);
+                    if (index > -1) {
+                        this.event.enrollments[index].status = status;  // update locally
+                    }
+                },
+                error: (err) => console.error(`Error updating status to ${status}`, err)
+            });
+        }
     enrollEvent(){
         if(this.alreadyEnrolled){
-            // console.log("here");
             return;
         }
         this.loading = true;

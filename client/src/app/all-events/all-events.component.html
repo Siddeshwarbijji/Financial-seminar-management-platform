@@ -1,6 +1,13 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
 <div class="container mt-4">
-  <h2 class="mb-4">All Events</h2>
+  <div class="d-flex align-items-center gap-30 mb-3">
+    <button class="btn d-flex align-items-center gap-2" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+    <h3>All Events</h3>
+  </div>
+  <!-- <h2 class="mb-4"></h2> -->
 
   <div class="mb-3 w-25">
     <input type="text" class="form-control" placeholder="Search events..." [(ngModel)]="searchTerm"
@@ -49,33 +56,6 @@
           </button>
         </div>
       </div>
-
-      <!-- <div class="card h-100 shadow-sm event-card">
-        <img [src]="images[(5-i)%10]" class="card-img-top" alt="Event Image" />
-
-        <div class="card-body">
-          <h5 class="card-title">{{ event.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            <i class="bi bi-calendar-event"></i> {{ event.schedule | date:'medium' }}<br>
-            <i class="bi bi-geo-alt"></i> {{ event.location }}
-          </h6>
-
-          <p class="card-text text-truncate">{{ event.description }}</p>
-
-          <span class="badge"
-                [ngClass]="{
-                  'bg-warning text-dark': event.status === 'PENDING',
-                  'bg-info text-dark': event.status === 'IN_PROGRESS',
-                  'bg-success': event.status === 'COMPLETED'
-                }">
-            <i class="bi bi-info-circle"></i> {{ event.status }}
-          </span>
-        </div>
-
-        <div class="card-footer text-center">
-          <button class="btn btn-primary btn-sm" [routerLink]="['/event-details']" [queryParams]="{eventId: event.id}">View Details</button>
-        </div>
-      </div> -->
     </div>
   </div>
   <div class="d-flex justify-content-center mt-3">

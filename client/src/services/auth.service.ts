@@ -25,9 +25,7 @@ export class AuthService {
   }
   // Method to retrieve login status
   get getLoginStatus(): boolean {
-
     return !!localStorage.getItem('token');
-
   }
   getToken(): string | null {
     this.token = localStorage.getItem('token');

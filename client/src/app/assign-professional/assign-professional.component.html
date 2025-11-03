@@ -1,8 +1,12 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
 <div class="container mt-4">
-  <h4 class="mb-3">
-    Assign Professional for: {{ title }}
-  </h4>
+  <div class="d-flex align-items-center gap-30 mb-3">
+    <button class="btn d-flex align-items-center gap-2" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+    <h3>Assign Professional for: {{ title }}</h3>
+  </div>
 
   <form (ngSubmit)="assignSelectedProfessionals()">
     <table class="table table-striped table-hover">

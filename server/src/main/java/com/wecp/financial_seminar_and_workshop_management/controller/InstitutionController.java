@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -108,11 +109,12 @@ public class InstitutionController {
     }
 
     @PutMapping("/event/enrollments/{enrollmentId}")
-    public ResponseEntity<Enrollment> acceptRejectEnrollment(@PathVariable Long enrollmentId) {
+    public ResponseEntity<Enrollment> acceptRejectEnrollment(@PathVariable Long enrollmentId, @RequestBody Map<String, String> body) {
         // Event event = eventService.getEventById(eventId)
         Enrollment enroll = enrollmentService.getEnrollment(enrollmentId);
-        if (enroll.getStatus().equalsIgnoreCase("Pending")) {
-            enroll.setStatus("accepted");
+        String newStatus = body.get("status");
+        if (enroll.getStatus().equalsIgnoreCase("Pending") && (newStatus.equalsIgnoreCase("accepted")) || (newStatus.equalsIgnoreCase("rejected"))) {
+            enroll.setStatus(newStatus);
         }
         return new ResponseEntity<>(enrollmentRepository.save(enroll), HttpStatus.OK);
     }

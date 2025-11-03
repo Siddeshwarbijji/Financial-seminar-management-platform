@@ -1,4 +1,6 @@
-<app-navbar></app-navbar><br>
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
+<br>
 <div class="parent enhanced-parent">
   <div class="left-panel">
     <div class="workshop-banner">
@@ -71,26 +73,45 @@
                 <strong>{{person.participant.username}}</strong><br>
                 <small class="text-muted">{{person.participant.email}}</small>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feedbacks Section -->
-      <div class="">
-        <div class="card shadow-sm glass-card">
-          <div class="card-header bg-success text-white">
-            <h6 class="mb-0">Feedbacks ({{event?.feedbacks?.length}})</h6>
-          </div>
-          <div class="card-body">
-            <div *ngFor="let feedback of event?.feedbacks" class="mb-3 participant">
-              <strong>{{feedback.username}}</strong>
-              <p class="mb-1">{{feedback.content}}</p>
-              <hr>
+              <div *ngIf="role === 'INSTITUTION' && person.status === 'PENDING'"
+                class="d-flex align-items-center ms-auto gap-1">
+                <button (click)="updateEnrollmentStatus(person.id, 'accepted')" class="btn btn-success btn-sm me-2">
+                  <i class="bi bi-check-circle fs-7 text-light"></i>
+                </button>
+                <button (click)="updateEnrollmentStatus(person.id, 'rejected')" class="btn btn-danger btn-sm">
+                  <i class="bi bi-x-circle fs-7 text-light"></i>
+                </button>
+              </div>
+              <div class="ms-3" *ngIf="role === 'INSTITUTION'">
+              <ng-container *ngIf="person.status.toLowerCase() === 'accepted'">
+                <!-- <i class="fas fa-check-circle text-success"></i> -->
+                <i class="bi bi-check-circle text-success fs-5"></i>
+              </ng-container>
+              <ng-container *ngIf="person.status.toLowerCase() === 'rejected'">
+                <!-- <i class="fas fa-times-circle text-danger"></i> -->
+                <i class="bi bi-x-circle text-danger fs-5"></i>
+              </ng-container>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Feedbacks Section -->
+    <div class="">
+      <div class="card shadow-sm glass-card">
+        <div class="card-header bg-success text-white">
+          <h6 class="mb-0">Feedbacks ({{event?.feedbacks?.length}})</h6>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let feedback of event?.feedbacks" class="mb-3 participant">
+            <strong>{{feedback.username}}</strong>
+            <p class="mb-1">{{feedback.content}}</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>

@@ -26,7 +26,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log("In reg oage");
     this.itemForm.get('email')?.valueChanges.subscribe(email=>{
       if(email && email.length > 3){
         this.httpService.checkUserExists(email, '').subscribe(result =>{

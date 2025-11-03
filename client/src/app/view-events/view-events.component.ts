@@ -21,16 +21,18 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
   showMessage: any;
   responseMessage: any;
   isUpdate: any = false;
-  eventList: any[] = [];
+  eventList: any = [];
   workShopList: any = [];
   userId: any;
   selectedEvent: any = {};
   status: any;
   role: string | null = '';
+  searchTerm: string = '';
+  sortBy: string = '';
+  filteredEvents: any[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 6;
-  filteredEvents: any[] = [];
-  searchTerm: string = '';
+
 
   constructor(
     private fb: FormBuilder,
@@ -53,8 +55,9 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
     if (this.role === 'INSTITUTION') {
       this.httpService.getEventByInstitutionId(this.userId).subscribe({
         next: (data) => {
-          this.eventList = data;
+          this.eventList = data
           this.filteredEvents = data;
+          this.filteredEvents = [...this.eventList];
           console.log("insitution ", data);
         }
       })
@@ -63,8 +66,8 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
       this.httpService.getEventByProfessional(this.userId).subscribe({
         next: (data) => {
           this.eventList = data;
-          this.filteredEvents = data;
-          // console.log("proff ", data);
+          this.filteredEvents = [...this.eventList];
+          console.log("proff ", data);
         }
       })
     }
@@ -72,10 +75,30 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
       this.httpService.getEnrolledEvents(this.userId).subscribe({
         next: (data) => {
           this.eventList = data;
-          this.filteredEvents = data;
-          // console.log("parti ", data);
+          this.filteredEvents = [...this.eventList];
+          console.log("parti ", data);
         }
       })
+    }
+    // this.getEvent();
+  }
+
+  applyFilter() {
+    const term = this.searchTerm.toLowerCase();
+    this.filteredEvents = this.eventList.filter((event: { title: string; schedule: string; }) => {
+      return event.title.toLowerCase().includes(term) || (event.schedule && event.schedule.toLowerCase().includes(term))
+    })
+  }
+
+  applySort() {
+    if (this.sortBy === 'location') {
+      this.filteredEvents.sort((a, b) => a.location.localeCompare(b.location));
+    }
+    else if (this.sortBy === 'status') {
+      this.filteredEvents.sort((a, b) => a.status.localeCompare(b.status));
+    }
+    else if (this.sortBy === 'schedule') {
+      this.filteredEvents.sort((a, b) => a.schedule.localeCompare(b.schedule));
     }
   }
 
@@ -84,22 +107,20 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/event-details', id]);
   }
 
-  navigateIfAllowed(domEvent: MouseEvent,event: any, path: string) {
+  navigateIfAllowed(domEvent: Event, event: any, path: string) {
     domEvent.stopPropagation();
     if (event.status === 'Completed') {
-      console.log("prevent default");
       domEvent.preventDefault();
       return;
     }
     if (path === '/assign-professional') {
-      console.log(event.title);
       this.router.navigate([path], { queryParams: { eventId: event.id, title: event.title } });
       return;
     }
     this.router.navigate([path], { queryParams: { eventId: event.id } });
   }
 
-  navigateParticipantIfAllowed(domEvent: MouseEvent, event: any, path: string) {
+  navigateParticipantIfAllowed(domEvent: Event, event: any, path: string) {
     domEvent.stopPropagation();
     if (event.status === 'Upcoming') {
       domEvent.preventDefault();
@@ -122,26 +143,10 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
       this.currentPage++;
     }
   }
+
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
     }
-  }
-
-  filterEvents() {
-    this.currentPage = 1;
-    const term = this.searchTerm.toLowerCase();
-    if (!term) {
-      this.filteredEvents = this.eventList;
-    }
-
-    this.filteredEvents = this.eventList.filter(e =>
-      e.title?.toLowerCase().includes(term) ||
-      e.description?.toLowerCase().includes(term) ||
-      e.location?.toLowerCase().includes(term) ||
-      e.status?.toLowerCase().includes(term) ||
-      e.schedule?.toLowerCase().includes(term)
-    )
-    // console.log(this.filteredEvents);
   }
 }

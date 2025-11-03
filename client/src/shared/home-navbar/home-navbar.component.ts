@@ -14,7 +14,7 @@ export class HomeNavBarComponent implements OnInit {
     username:string='';
     email:string='';
   
-    constructor(private router: Router, private authService: AuthService)
+    constructor(private router: Router, public authService: AuthService)
     {}
     ngOnInit(): void {
         // Fetch role from localStorage after login
