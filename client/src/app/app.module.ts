@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HomePageComponent } from './home/home-page.component';
+import { HomeNavBarComponent } from '../shared/home-navbar/home-navbar.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HomePageComponent } from './home/home-page.component';
     AllEventsDetails,
     FooterComponent,
     AboutUsComponent,
-    HomePageComponent
+    HomePageComponent,
+    HomeNavBarComponent
   ],
   imports: [
     BrowserModule,

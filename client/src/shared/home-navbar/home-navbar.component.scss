@@ -1,0 +1,46 @@
+.navbar {
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.nav-link.active{
+  font-weight: bold;
+   color:#ffc107 !important;
+   border-bottom: 2px solid #ffc107;
+}
+.welcome-text{
+  margin-top: 10px;
+  line-height: 1.6px;
+}
+.nav-link {
+  color: #ddd;
+  font-size: 1rem;
+  margin-right: 15px;
+  transition:color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-light {
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.btn-outline-dark:hover{
+  background-color: #343a40;
+  color: #fff;
+  
+}
+
+.btn-warner:hover{
+  background-color: #e0a800;
+}
+

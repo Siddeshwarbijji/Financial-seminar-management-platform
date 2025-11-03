@@ -2,7 +2,8 @@
   // background: linear-gradient(135deg, #007bff, #00c6ff);
   // background: linear-gradient(135deg, #007bff, #6610f2);
   background: linear-gradient(135deg, #0f2027, #2c5364);
-  color: #fff;
+  // color: #fff;
+  color: black;
   height: 100vh;
   padding: 80px;
   display: flex;
@@ -10,63 +11,76 @@
   align-items: center;
   overflow: hidden;
   padding: 80px;
+}
 
-  .btn-primary{
-    background-color: #ffc107;
-    color: #000;
-    font-weight: 600;
-  }
+.btn-primary {
+  background-color: #ffc107;
+  color: #000;
+  font-weight: 600;
+}
 
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
 
+p {
+  font-size: 1.2rem;
+  margin-bottom: auto;
+  margin-right: 80px;
+}
 
-  h1{
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  p{
-    font-size: 1.2rem;
-    margin-bottom: auto;
-    margin-right: 80px;
-  }
-  .btn-outline-light{
-    border: 2px solid #fff;
-    color: #fff;
-  }
-  .hero-content {
-    max-width: 500px;
-    text-align: left;
-    // z-index: 2;
-  }
+.btn-outline-light {
+  border: 2px solid #fff;
+  // color: #fff;
+}
 
-  .hero-content h1{
-    font-size: 3rem;
-    font-weight: 700;
-  }
+.hero-content {
+  max-width: 500px;
+  text-align: left;
+  // z-index: 2;
+}
 
-  .hero-content p{
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
 
-  .hero-image img{
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero-image img {
+  max-width: 350px;
+  animation: float 3s ease-in-out infinite;
+  border-radius: 10px;
+  // position: relative;
+  // right: 10%;
+  // bottom: 10%;
+  // z-index: 1;
+
+  .floating-img {
     max-width: 350px;
-    animation: float 3s ease-in-out infinite;
-    border-radius: 10px;
-    // position: relative;
-    // right: 10%;
-    // bottom: 10%;
-    // z-index: 1;
-
-    .floating-img {
-      max-width: 350px;
-      animation: float 4s ease-in-out infinite;
-    }
+    animation: float 4s ease-in-out infinite;
   }
 }
 
+.login :hover {
+  color: black;
+}
+
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }

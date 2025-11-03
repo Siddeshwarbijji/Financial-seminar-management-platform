@@ -21,7 +21,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { HomePageComponent } from './home/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashbaordComponent },
