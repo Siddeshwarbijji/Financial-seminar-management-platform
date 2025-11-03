@@ -44,3 +44,17 @@
   background-color: #e0a800;
 }
 
+.dropdown-menu{
+  background: linear-gradient(205deg, #0f2027, #2c5364);
+  // color: white;
+  box-shadow: 0 8px 16px rgba($color: #000000, $alpha: 0.2);
+  min-width: 200px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 8px;
+}
+.dropdown-item-text{
+  color: white;
+  font-weight: 500;
+}
+

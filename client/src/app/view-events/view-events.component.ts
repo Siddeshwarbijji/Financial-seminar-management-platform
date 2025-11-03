@@ -113,7 +113,7 @@ export class ViewEventsComponent implements OnInit, AfterViewInit {
       domEvent.preventDefault();
       return;
     }
-    if (path === '/assign-professional') {
+    if (path === '/assign-professional' || path === '/add-resource') {
       this.router.navigate([path], { queryParams: { eventId: event.id, title: event.title } });
       return;
     }

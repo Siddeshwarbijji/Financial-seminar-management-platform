@@ -1,10 +1,13 @@
-<!-- <app-navbar></app-navbar> -->
 <home-navbar></home-navbar>
 <br>
 <div class="parent enhanced-parent">
+  <!-- <div class="">
+    <button class="btn" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+  </div> -->
   <div class="left-panel">
     <div class="workshop-banner">
-      <!-- <div class="banner-image"></div> -->
       <div class="workshop-title">
         <h2>{{event?.title}}</h2>
         <div>{{event?.schedule | date: 'MMMM dd, yyyy'}} &nbsp; <i class="bi bi-geo-alt"></i> {{event?.location}}</div>

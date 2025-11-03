@@ -23,7 +23,8 @@
 .right-panel {
   flex: 1; /* Equal width */
   height: 100vh; /* Equal height */
-  background-color: #6f42c1; /* Main accent color */
+  // background-color: #6f42c1; /* Main accent color */
+  background: linear-gradient(135deg, #0f2027, #2c5364);
   // background-color: grey;
   color: white;
   border-radius: 0 10px 10px 0;
@@ -75,7 +76,8 @@ label {
 .btn-custom {
   // background-color: #6f42c1; /* Main accent */
   // background-color: grey;
-  background-color: #6f42c1;
+  // background-color: #6f42c1;
+  background: linear-gradient(135deg, #0f2027, #2c5364);
   color: white;
   border: none;
   padding: 10px;
@@ -88,7 +90,8 @@ label {
   width: 100%;
 }
 .btn-custom:hover {
-  background-color: #8453de;
+  // background-color: #8453de;
+  background: linear-gradient(135deg, #0f2027, #2c5364);
 }
 
 /* Links */

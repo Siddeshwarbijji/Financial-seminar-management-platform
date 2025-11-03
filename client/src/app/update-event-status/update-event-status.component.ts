@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 import { DatePipe } from '@angular/common';
 import { last } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-event-status',
@@ -20,7 +21,7 @@ export class UpdateEventStatusComponent {
   loading: boolean = false;
   lastUpdated: Date = new Date();
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private httpService: HttpService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private httpService: HttpService, private router: Router, private location: Location) { }
 
   ngOnInit() {
     this.eventId = +this.route.snapshot.queryParamMap.get('eventId')!;
@@ -69,6 +70,9 @@ export class UpdateEventStatusComponent {
         }, 1000);
       })
     }
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
 

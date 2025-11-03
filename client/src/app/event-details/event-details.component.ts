@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpService } from "../../services/http.service";
+import { Location } from "@angular/common";
 
 @Component({
     selector: 'app-event-details',
@@ -21,7 +22,7 @@ export class EventDetailsComponent implements OnInit{
     eventCompleted: boolean = false;
     buttonClicked:boolean = false; 
 
-    constructor(private route : ActivatedRoute, private router: Router, private httpService: HttpService){}
+    constructor(private route : ActivatedRoute, private router: Router, private httpService: HttpService, private location: Location){}
     ngOnInit(): void {
         this.role = localStorage.getItem('role')!;
         const eventId = Number(this.route.snapshot.queryParamMap.get('eventId'));
@@ -77,4 +78,5 @@ export class EventDetailsComponent implements OnInit{
         // this.showUpdateStatus = !this.showUpdateStatus;
         this.router.navigate(['/update-event-status', this.event.id]);
     }
+    goBack(): void { this.location.back(); }
 }

@@ -1,16 +1,21 @@
 <!-- <app-navbar></app-navbar> -->
 <home-navbar></home-navbar>
 <div class="container d-flex justify-content-center align-items-center">
+  <!-- <div class="d-flex align-items-center back-btn">
+    <button class="btn d-flex align-items-center gap-2 ms-3" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+  </div> -->
   <div class="card shadow-sm" style="max-width: 500px; width: 100%;">
     <div class="card-header bg-primary text-white text-center py-3 fs-5 fw-bold">
       <i class="bi bi-pencil-square me-2"></i> Update Event Status
     </div>
     <div class="card-body p-4">
-      <h4 class="text-center mb-4">Update Event Status</h4>
+      <!-- <h4 class="text-center mb-4">Update Event Status</h4> -->
       <form [formGroup]="itemForm" (ngSubmit)="updateStatus()">
         <!-- Event Title -->
         <div class="mb-3">
-     
+
           <label class="form-label fw-bold"><i class="bi bi-tag"></i> Event Title</label>
           <input type="text" class="form-control" formControlName="eventTitle" />
         </div>
@@ -52,6 +57,8 @@
         {{ successMessage }}
       </div>
     </div>
-    <div class="card-footer text-muted text-center">
+    <!-- <div class="card-footer text-muted text-center">
       Last updated: {{ lastUpdated | date }}
-    </div>
+    </div> -->
+  </div>
+</div>

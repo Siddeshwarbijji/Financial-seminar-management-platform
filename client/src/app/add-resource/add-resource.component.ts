@@ -17,6 +17,7 @@ export class AddResourceComponent implements OnInit {
   errorMessage: string = '';
   showMessage: boolean = false;
   responseMessage: string = '';
+  title: string = '';
 
   constructor(private fb: FormBuilder, private httpService: HttpService, private route: ActivatedRoute, private router: Router, private location: Location) {
     this.itemForm = this.fb.group({
@@ -29,6 +30,8 @@ export class AddResourceComponent implements OnInit {
 
   ngOnInit(): void {
     const eventId = this.route.snapshot.queryParamMap.get('eventId');
+    this.title = this.route.snapshot.queryParamMap.get('title')!;
+    // console.log("vnetID: ", eventId);
     this.itemForm.patchValue({ eventId: eventId });
     this.getEventsForInstitution();
   }
@@ -73,20 +76,7 @@ export class AddResourceComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
     })
-
-    // this.httpService.addResourceToEvent(selectedEventId, resourceDetails).subscribe({
-    //   next: (res: any) => {
-    //     this.showMessage = true;
-    //     this.responseMessage = 'Resource added successfully!';
-    //     this.itemForm.reset();
-    //   },
-    //   error: (err: any) => {
-    //     this.showError = true;
-    //     this.errorMessage = 'Failed to add resource. Please try again.';
-    //   }
-    // });
   }
-
   goBack(): void {
     this.location.back();
   }
