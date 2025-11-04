@@ -12,7 +12,6 @@ import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { ViewEventsComponent } from './view-events/view-events.component';
-import { NavbarComponent } from '../shared/navbar/navbar.component';
 
 import { AssignProfessionalComponent } from './assign-professional/assign-professional.component';
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
@@ -35,7 +34,6 @@ import { HomeNavBarComponent } from '../shared/home-navbar/home-navbar.component
     CreateEventComponent,
     AddResourceComponent,
     ViewEventsComponent,
-    NavbarComponent,
     AssignProfessionalComponent,
     UpdateEventStatusComponent,
     AddFeedbackComponent,
