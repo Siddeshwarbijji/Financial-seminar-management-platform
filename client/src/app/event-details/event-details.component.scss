@@ -1,0 +1,269 @@
+.enhanced-parent{
+  margin-top: 0 auto;
+  // padding-left: 100px;
+  // padding-right: 100px;
+}
+
+/* Parent Layout */
+.parent {
+  display: flex;
+  gap: 10px;
+  padding-top: 0%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 20px;
+  // padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 2;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Workshop Banner */
+.workshop-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.workshop-title {
+  background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170') no-repeat center center / cover;
+  height: 170px;
+  border-radius: 10px;
+}
+
+.workshop-title h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.workshop-title div {
+  font-size: 14px;
+  color: white;
+}
+
+/* Workshop Cards */
+.workshop-card-parent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event-details {
+  position: static;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* ✅ Scrollable Event Details */
+.event-details-child {
+  width: auto;
+  max-width: 100%;
+  max-height: 200px; /* Restrict height */
+  overflow-y: auto; /* Scroll inside */
+  padding-right: 10px;
+  scrollbar-width: thin;
+}
+
+.event-details-child p {
+  text-align: justify; /* Professional look */
+  word-break: break-word; /* Avoid awkward breaks */
+}
+
+.event-details-child::-webkit-scrollbar {
+  width: 6px;
+}
+.event-details-child::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* Workshop Card */
+.workshop-card {
+  display: inline-block;
+  min-width: 250px;
+  max-width: 90%;
+  max-height: 250px; /* Prevent full-page stretch */
+  overflow-y: auto; /* Scroll inside */
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+}
+
+.workshop-card h6 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.workshop-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.details-row {
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: center;
+  // text-align: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 13px;
+  color: #444;
+}
+
+.ongoing {
+  color: #28a745;
+  font-weight: 600;
+}
+
+/* Participants Grid */
+// .participants-grid {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+//   gap: 15px;
+// }
+.participants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 per row */
+  gap: 10px; /* Reduce gap between cards */
+  
+}
+.participant {
+  // display: flex;
+  // align-items: center;
+  gap: 6px; /* Reduced gap between avatar and text */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 8px; /* Compact padding */
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  min-height: 60px; /* Slightly smaller height */
+  word-break: break-word;
+  // padding-right: 8px;
+}
+
+
+.participant:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.card-header {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-body {
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: black;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1e72b3;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #155a8a;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .parent {
+    flex-direction: column;
+  }
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.scrolling{
+  overflow-y:auto;
+}
+
+.event-details-child p {
+  text-align: justify; /* Makes text evenly aligned */
+  word-break: break-word; /* Prevents awkward breaks */
+  max-height: 3.2em; /* Approx. 2 lines (1.6em per line) */
+  overflow-y: auto; /* Enables vertical scrolling */
+  display: block;
+  padding-right: 8px; /* Space for scrollbar */
+}
+
+.details{
+  display: flex;
+  gap: 5px;
+}
+
+/* Optional: Custom scrollbar */
+.event-details-child p::-webkit-scrollbar {
+  width: 6px;
+}
+.event-details-child p::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}

@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <div class="d-flex">
+      <a class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
+        <div class="footer-logo">
+          <img src="assets/logo.png" width="40" height="40">
+        </div>
+        Financial Seminar & Workshop
+      </a>
+    </div>
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about-us" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">About us</a>
+        </li>
+
+        <li class="nav-item" *ngIf="authService.getLoginStatus">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+        </li>
+        <div *ngIf="authService.getLoginStatus">
+          <li class="nav-item" *ngIf="authService.getRole === 'PARTICIPANT'">
+            <a class="nav-link" routerLink="/all-events" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">All Events</a>
+          </li>
+
+          <li class="nav-item" *ngIf="authService.getRole === 'INSTITUTION'">
+            <a class="nav-link" routerLink="/create-event" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">Create Event</a>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <div *ngIf="authService.getLoginStatus">
+      <!-- Toggler for mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto" style="margin-left: 35px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><span class="dropdown-item-text px-3">{{ username }}</span></li>
+              <li><span class="dropdown-item-text px-3">{{ email }}</span></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li class="logout">
+                <a class="dropdown-item px-3">
+                  <button class="w-100 d-flex align-items-center gap-2 btn btn-danger text-white text-decoration-none"
+                    (click)="logout()">
+                    <span>Logout</span>
+                    <i class="bi bi-box-arrow-right h5 mb-0 text-white"></i>
+                  </button>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+

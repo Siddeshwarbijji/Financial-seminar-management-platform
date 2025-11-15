@@ -1,1 +1,40 @@
-//doto: complete missing code..
+<!-- <app-navbar></app-navbar> -->
+<home-navbar></home-navbar>
+<div class="parent">
+
+  <div class="d-flex align-items-center mb-3">
+    <button class="btn d-flex align-items-center gap-2 ms-3" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+    <h2 class="text-primary">{{ event.title }}</h2>
+  </div>
+
+  <div class="container px-1 shadow rounded bg-white">
+    <div class="row">
+      <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <img src="assets/Feedback.png" class="img-fluid" height="500px">
+      </div>
+
+      <!-- Right Column: Feedback Form -->
+      <div class="col-md-7">
+        <p class="text-muted">{{ event.description }}</p>
+        <form [formGroup]="feedbackForm" (ngSubmit)="SubmitFeedback()">
+          <div class="mb-3">
+            <label for="content" class="form-label fw-bold">Your Feedback</label>
+            <textarea formControlName="content" id="content" class="form-control" rows="5"
+              placeholder="Share your thoughts..."></textarea>
+            <div *ngIf="feedbackForm.get('content')?.invalid && feedbackForm.get('content')?.touched"
+              class="text-danger mt-1">
+              Feedback must be at least 10 characters.
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="feedbackForm.invalid">{{loading ? 'Submitting...':
+            'Submit Feedback'}}</button>
+          <div *ngIf="success" class="submit">
+            Feedback Submitted Successfully!!
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

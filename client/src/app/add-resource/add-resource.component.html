@@ -1,1 +1,65 @@
-//doto: complete missing code..
+<home-navbar></home-navbar>
+<div class="d-flex align-items-center mb-1">
+  <div class="d-flex align-items-center back-btn">
+    <button class="btn d-flex align-items-center gap-2 ms-3" (click)="goBack()">
+      <i class="bi-arrow-left-circle-fill fs-2"></i>
+    </button>
+  </div>
+  <h3 class="color text-center">Manage Your Resources for event: {{title}}</h3>
+</div>
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row w-100">
+    <!-- Left Panel: Form -->
+    <div class="col-md-6 left-panel">
+      <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="card p-4 shadow-sm animate-left" novalidate>
+        <!-- <h3 class="mb-4 text-center">Add Resource to Event</h3> -->
+
+        <!-- Error Message -->
+        <div *ngIf="showError" class="alert alert-danger">{{ errorMessage }}</div>
+        <div *ngIf="showMessage" class="alert alert-success">{{ responseMessage }}</div>
+
+        <!-- Resource Name -->
+        <div class="mb-3">
+          <label class="form-label">Resource Name<span class="text-danger">*</span></label>
+          <input type="text" class="form-control" formControlName="description" placeholder="Enter resource name">
+          <div *ngIf="itemForm.get('description')?.touched && itemForm.get('description')?.invalid"
+            class="text-danger mt-1">
+            Resource name is required.
+          </div>
+        </div>
+
+        <!-- Resource Type -->
+        <div class="mb-3">
+          <label class="form-label">Resource Type<span class="text-danger">*</span></label>
+          <input type="text" class="form-control" formControlName="type" placeholder="Enter resource type">
+          <div *ngIf="itemForm.get('type')?.touched && itemForm.get('type')?.invalid" class="text-danger mt-1">
+            Resource type is required.
+          </div>
+        </div>
+
+        <!-- Availability Status -->
+        <div class="mb-3">
+          <label class="form-label">Availability Status<span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="availabilityStatus">
+            <option value="">Select status</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+          </select>
+          <div *ngIf="itemForm.get('availabilityStatus')?.touched && itemForm.get('availabilityStatus')?.invalid"
+            class="text-danger mt-1">
+            Availability status is required.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">Add Resource</button>
+      </form>
+    </div>
+
+    <!-- Right Panel: Image -->
+    <div class="col-md-6 right-panel text-center animate-right">
+      <!-- <h2 class="color">Manage Your Resources</h2> -->
+      <img src="assets/resource1.png" alt="Resource Image" class="img-fluid" style="max-width: 450px;">
+    </div>
+  </div>
+</div>

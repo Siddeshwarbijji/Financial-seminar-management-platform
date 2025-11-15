@@ -1,0 +1,85 @@
+/* Container */
+.container {
+  //background:linear-gradient(135deg, #0f2027, #2c5364);
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card Styling */
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Panels */
+.left-panel, .right-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animations */
+// @keyframes slideInLeft {
+//   from {
+//     transform: translateX(-100%);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes slideInRight {
+//   from {
+//     transform: translateX(100%);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+.animate-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Button Hover */
+.btn-primary {
+  background:linear-gradient(135deg, #0f2027, #2c5364);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.color{
+  color: black;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background:linear-gradient(135deg, #0f2027, #2c5364);
+}
+
+/* Image Hover */
+.right-panel img {
+  transition: transform 0.4s ease;
+}
+
+.right-panel img:hover {
+  transform: scale(1.05);
+}
+
+.back-btn{
+  margin-right: 20px;
+}
